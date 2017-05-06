@@ -23451,6 +23451,7 @@ this.cytoscape = cytoscape;
     var r = this;
     var style = ele._private.style;
     var fStyle = style['font-style'].strValue;
+    // var size = '50px';
     var size = style['font-size'].pxValue + 'px';
     var family = style['font-family'].strValue;
     // var variant = style['font-variant'].strValue;

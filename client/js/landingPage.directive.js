@@ -53,31 +53,31 @@ function LandingPageController(
   vm.refreshTables        = refreshTables;
   vm.logStudy             = logStudy;
 
-  vm.studyTemplates = [
-    {
-      guid: 1,
-      name: 'Is grad school worth it?',
-    },
-    {
-      guid: 2,
-      name: 'Prepay Car Loan',
-    },
-    {
-      guid: 3,
-      name: 'Pay student loan or max out 401k?',
-    },
-  ];
+  // vm.studyTemplates = [
+  //   {
+  //     guid: 1,
+  //     name: 'Is grad school worth it?',
+  //   },
+  //   {
+  //     guid: 2,
+  //     name: 'Prepay Car Loan',
+  //   },
+  //   {
+  //     guid: 3,
+  //     name: 'Pay student loan or max out 401k?',
+  //   },
+  // ];
 
-  vm.showCharts    = true;
-  vm.editingStudy  = false;
+  // vm.showCharts    = true;
+  // vm.editingStudy  = false;
 
-  var noStudyMessage = {
-    guid   : 0,
-    message: 'no studies loaded - please clone one',
-    name   : 'no studies loaded - please clone one',
-  };
+  // var noStudyMessage = {
+  //   guid   : 0,
+  //   message: 'no studies loaded - please clone one',
+  //   name   : 'no studies loaded - please clone one',
+  // };
 
-  getStudys(newPageLoad=true);
+  // getStudys(newPageLoad=true);
 
   ////////////////////////////////////////////////////// Charts /////////////////////////////////
 
