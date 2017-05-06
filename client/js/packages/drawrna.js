@@ -5678,6 +5678,7 @@ function contains(container, elem) {
       handleTouchTargetMult: 3, // effective size of handle on touch (not shown but used to make grabbing the small handle easier)
       handleColor: '#ff0000', // the colour of the handle and the line drawn from it
       handleLineType: 'ghost', // can be 'ghost' for real edge, 'straight' for a straight line, or 'draw' for a draw-as-you-go line
+      // handleLineWidth: 20, // width of handle line in pixels
       handleLineWidth: 1, // width of handle line in pixels
       handleNodes: 'node', // selector/filter function for whether edges can be made from a given node
       hoverDelay: 150, // time spend over a target node before it is considered a target selection
@@ -53426,9 +53427,11 @@ Style.prototype.getWeight = function(type){
     //Get weight for a certain bond type
     var weight;
     if(type=== "hbond" || type === "violation"){
-        weight = 4;
+        weight = 10;
+        // weight = 4;
     } else {
-        weight = 5;
+        // weight = 5;
+        weight = 10;
     }
     return weight;
 }
@@ -54236,6 +54239,15 @@ var Optspanel = require("./views/optspanel");
 
 var Drawrnajs = Backbone.View.extend({
     initialize: function(opts){
+
+
+      console.log('|++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++|');
+      console.log('opts: ');
+      console.log(opts);
+      // console.log(opts.struct.links.models);
+      console.log('|------------------------------------------------------------------------------------------------|')
+      
+      
         var layout = opts.layout || "naview";
         this.struct = new Structure(opts.seq, opts.dotbr, layout);
         this.el = opts.el;

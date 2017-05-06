@@ -13,6 +13,23 @@ var env       = process.env.NODE_ENV || 'development';
 var config    = require(__dirname + '/../config.json')[env];
 var db        = {};
 
+
+// var test    = require(__dirname + '/../../node_modules/drawrnajs/src/drawrna.js');
+
+// console.log(test);
+// path.join(__dirname, '..', '..', 'client', 'views', 'finance.html')
+
+
+// var test = /Users/kletusvandamme/projects/dna-playground/node_modules/drawrnajs/src/drawrna.js
+
+    // <script src="../node_modules/drawrnajs/src/drawrna.js"></script>
+
+
+
+
+
+
+
 if (process.env.DATABASE_URL) {
   // the application is executed on Heroku ... use the postgres database
   sequelize = new Sequelize(process.env.DATABASE_URL, {
