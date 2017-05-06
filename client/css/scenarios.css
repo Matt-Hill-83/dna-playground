@@ -1,0 +1,61 @@
+.scenario-title-holder {
+	display       : flex;
+	flex-direction: row;
+	align-self    : flex-start;
+	margin-top    : 1em;	
+}
+
+.scenario-title-box {
+	justify-content: flex-start;
+	display        : flex;
+	flex-direction : row;
+	width          : 100%;
+}
+
+.scenario-title-and-friends {
+	display: flex;
+	width  : 100%;
+}
+
+.scenario-title {
+	display  : flex;
+	color    : #fb4646;	
+	font-size: 2.8em;
+}
+
+.scenario-icons {
+	display       : flex;
+	flex-direction: row;
+	align-self    : center;
+}
+
+.scenario-button-container {
+	display        : flex;
+	flex-direction : row;
+	align-items    : flex-start;	
+	align-self     : flex-end;
+	justify-content: flex-end;	
+	margin-bottom  : -0.1em;
+	margin-right   : -0.1em;	
+}
+
+.scenario-button-holder {
+	display       : flex;
+	flex-direction: row;
+	align-items   : flex-start;	
+	align-self    : flex-end;
+	margin-left   : auto;
+}
+
+.scenario-action-button {
+	text-align      : center;
+	color           : #333;
+	background-color: white; 
+	border          : 1px solid black;
+	border-radius   : 3px;
+	padding         : 0.1em 1em;
+	
+	margin-left     : 0.2em;	
+	margin-bottom   : 0.1em;
+	margin-right    : 0.1em;
+}

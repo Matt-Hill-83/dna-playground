@@ -1,0 +1,118 @@
+<div class="flex-container" ng-controller="FinanceTable">
+
+	<div class="flex-area">
+		
+		<section>
+				<article>
+					<div class="study-container">
+						<div class="study-title-container">
+						
+							<div class="selectdiv">
+							  <label>
+										<select
+											ng-if       ="!landingPage.editingStudy"
+											ng-click    ="landingPage.updateStudy(landingPage.activeStudy)"
+											class       ="crayon-font study-title study-selector"
+											ng-change   ="landingPage.selectDifferentStudy(landingPage.activeStudy)"    
+											ng-options  ="study.message for study in landingPage.studys track by study.guid"
+											ng-model    ="landingPage.activeStudy"
+										></select>    
+
+							  </label>
+							</div>
+
+							<!-- editable version of field -->
+							<div
+								ng-if =" false && landingPage.editingStudy"
+								class ="edit-study-input"
+								>
+		            <input
+									class         ="crayon-font study-title-edit-mode edit-study-input"
+									type          ="text"
+									value         ="{{landingPage.activeStudy.name}}"
+									ng-mouseleave ="landingPage.editStudyFinsihed(landingPage.activeStudy)"
+									>
+							</div>
+
+							<div class="study-icon-container">
+								<!-- edit study icon -->
+								<div ng-if="false" class="edit-study-icon grey tooltip" ng-click="landingPage.editStudy(landingPage.activeStudy)">
+									<i class="fa fa-pencil fa-fw"></i>
+									<span class="grey tooltiptext">edit study</span>
+								</div>
+
+								<!-- delete study icon -->
+	              <div class="edit-study-icon grey tooltip" ng-click ="landingPage.deleteStudy(landingPage.activeStudy)">
+	                <i class="fa fa-trash-o fa-fw"></i>
+	                <span class="grey tooltiptext">delete study</span>
+	              </div>
+
+								<!-- new study icon -->
+	              <div class="edit-study-icon grey tooltip" ng-click ="landingPage.addStudy(landingPage.studyToCreate, true)">
+	                <i class="fa fa-clone fa-fw"></i>
+	                <span class="grey tooltiptext">clone study</span>
+	              </div>              
+							</div>
+
+						</div>
+
+				</div>
+
+			</article>
+
+			<!-- global constants -->
+			<!-- <article ng-if="false">
+			  <div>
+			    <table class ="table-cashflow">
+			      <tr>
+			        <th ng-repeat ="header in landingPage.constantsTableHeader track by $index">
+			          {{header}}
+			        </th>
+			      </tr>
+
+			      <tr ng-repeat ="constant in landingPage.constants track by $index">
+			        <td> {{constant.name}} </td>
+			        <td> {{constant.value}} </td>
+			        <td> {{constant.units}} </td>
+			      </tr>
+			    </table>
+			  </div>
+			</article> -->
+
+				<!-- Draw Tables -->
+				<div ng-if="landingPage.showTables">
+					<div ng-repeat="scenario in landingPage.scenarios track by $index">
+				    <finance-view tableobject=scenario parent=landingPage> </finance-view>
+					</div>
+				</div>
+				
+				<!-- Draw Charts -->
+				<div ng-if="landingPage.showCharts">
+					<article ng-repeat="chart in landingPage.activeStudy.charts track by $index">
+				    <money-chart chartobject=chart parent=landingPage> </money-chart>
+					</article>
+				</div>
+				
+				<!-- hacky workaround to fix databinding issue -->
+			  <div ng-if="!landingPage.showCharts">
+			    {{landingPage.refreshCharts()}}
+			  </div>
+				
+				<!-- hacky workaround to fix databinding issue -->
+			  <div ng-if="!landingPage.showTables">
+			    {{landingPage.refreshTables()}}
+			  </div>
+				
+		<div class="study-button-container">
+			<button
+				class    ="clear-db"
+				ng-click ="landingPage.dropDb()"
+				type     ="button"
+			>
+			  Clear Database
+			</button>    
+		</div>		
+		</section>
+	</div>
+</div>
+

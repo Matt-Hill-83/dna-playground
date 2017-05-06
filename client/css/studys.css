@@ -1,0 +1,134 @@
+.study-container {
+	display         : flex;
+	flex-direction  : column;		
+	border-radius   : 12px;	
+}
+
+.study-action-button {
+	text-align      : center;
+	padding         : 2px;
+	margin          : auto;
+	color           : #333;
+	background-color: white; 
+	width           : auto;
+}
+
+.study-title-container {
+	display        : flex;
+	align-items    : center;
+	justify-content: center;	
+	margin-top     : -2em;	
+}
+
+.study-title {
+	display         : flex;
+	color           : black;
+	font-size       : 2.8em;
+	align-self      : center;
+	height          : 1.6em;
+	background-color: rgba(0, 0, 0, 0);
+	border-color    : rgba(0, 0, 0, 0);
+}
+
+.study-title-edit-mode {
+	display         : flex;
+	color           : #4b4b86;
+	background-color: white;	
+	font-size       : 4.2em;	
+	align-self      : center;
+}
+
+.study-button-container {
+	display         : flex;
+	flex-direction  : row;		
+}
+
+.study-description {
+	background-color: white;
+}
+
+.edit-study-input {
+	display      : flex;
+	width        : 100%;
+	min-width    : 16em;	
+	border       : 1px solid black;
+	border-radius: 6px;
+}
+
+.edit-study-icon {
+	display  : flex;
+	font-size: 2em;
+}
+
+.new-study-picker {
+	display: flex;
+}
+
+.new-study-picker option{
+	font-size: 10px;
+  font-family: Trebuchet MS, sans-serif;
+}
+
+.study-icon-container {
+	display  : flex;
+	font-size: 0.8em;
+}  
+
+.new-study-drop-down {
+	font-size: 1.2em;
+}
+
+.study-selector option {
+	background-color: red;
+}
+
+.study-selector option[value="1"] {
+	background-color:yellow;
+} 
+
+.clear-db {
+	background-color: rgba(0, 0, 0, 0);	
+	border-color: rgba(0, 0, 0, 0);	
+	color: rgba(0, 0, 0, 0);	
+}
+
+/*custome select box*/
+ 
+.selectdiv select {
+	cursor         : pointer;	
+	
+	-webkit-appearance: none;
+	-moz-appearance   : none;
+	appearance        : none;
+  /* Add some styling */
+  
+	display       : block;
+	width         : 100%;
+	height        : auto;
+	float         : right;
+	margin        : 0px 0px;
+	padding       : 0px 24px;
+	font-size     : 3em;
+	color         : #333;
+	-ms-word-break: normal;
+	word-break    : normal;
+	margin-top    : 0.3em;
+}
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
