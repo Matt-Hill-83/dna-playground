@@ -18,18 +18,6 @@ function financeController(
 	$cookies
 	) {
 
-  // Retrieving a cookie
-  var cookie = $cookies.get('userGuid');
-
-  // If there is no 'userGuid' cookie, create one.
-  // This will be used to identify which records were created by the current user.
-  // This is a very hacky form of authentication.
-  if (!cookie) {
-	  var userGuid = Utilities.guid();
-	  $cookies.put('userGuid', userGuid);
-  }
-
-	$scope.favoriteCookie = $cookies.get('userGuid');
   
 	// monkey patch .every function if it doesn't exist.
 	if (!Array.prototype.every)
