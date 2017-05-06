@@ -1,6 +1,7 @@
 "use strict";
 
-var app = angular.module('app',['ngRoute', 'ngDialog', 'ngCookies']);
+// var app = angular.module('app',['ngRoute', 'ngDialog', 'ngCookies']);
+var app = angular.module('app',['ngRoute']);
 app.controller('FinanceTable', [
 		'$scope',
 		'$http',

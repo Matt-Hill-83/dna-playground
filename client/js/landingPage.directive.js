@@ -7,16 +7,16 @@ function landingPageController(Table, Constants) {
     templateUrl: 'views/dna.html',
     controller : [
       'Api',
-      'Chart',
+      // 'Chart',
       'Constants',
-      'DataBase',
+      // 'DataBase',
       '$filter',
       '$rootScope',
       '$scope',
       '$q',
       '$http',
       'Utilities',
-      'Table',
+      // 'Table',
       LandingPageController
     ],
     controllerAs: 'landingPage',
@@ -25,16 +25,16 @@ function landingPageController(Table, Constants) {
 
 function LandingPageController(
   Api,
-  Chart,
+  // Chart,
   Constants,
-  DataBase,
+  // DataBase,
   $filter,
   $rootScope,
   $scope,
   $q,
   $http,
-  Utilities,
-  Table
+  Utilities
+  // Table
   ) { 
   
   vm = this;
