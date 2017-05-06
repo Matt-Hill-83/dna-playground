@@ -4,7 +4,8 @@ angular.module('app')
 function landingPageController(Table, Constants) {
   return {
     restrict   : 'E',
-    templateUrl: 'views/landingPage.html',
+    templateUrl: 'views/test.html',
+    // templateUrl: 'views/landingPage.html',
     controller : [
       'Api',
       'Chart',
