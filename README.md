@@ -1,6 +1,6 @@
-# Money Buckets
+# DNA Playground
 Live link:
-Check out the [working demo](http://www.money-buckets.com/)!
+Check out the [working demo](http://www.dna-playground.heroku.com/)!
 
 1. Fork/Clone
 2. Install dependencies - `npm install`
