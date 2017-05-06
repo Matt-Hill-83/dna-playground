@@ -24,11 +24,13 @@ var app = new Rna({
 console.log('|++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++|');
 console.log('app: ');
 console.log(app);
+console.log(app.optns.struct.attributes.links.models[0].attributes);
 console.log('|------------------------------------------------------------------------------------------------|')
 
 app.optns.struct.attributes.links.models[0].attributes.color = "purple";
 app.optns.struct.attributes.links.models.map((item)=> {
     item.attributes.color = "purple";
+    item.attributes.weight = 1;
 });
 
 // debugger;
