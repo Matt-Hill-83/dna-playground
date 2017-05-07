@@ -1,6 +1,7 @@
 var express = require('express');
 var router  = express.Router();
-var models  = require('../models/index');
+// var models  = require('../models/index');
+var models  = {};
 
 var cookieParser = require('cookie-parser');
 

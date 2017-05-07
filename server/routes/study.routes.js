@@ -1,6 +1,6 @@
 module.exports = function(router){
-  var models = require('../models/index');
-
+  // var models = require('../models/index');
+  var models  = {};
   router.studyRoutes = {
     destroyStudyJoinScenariosByScenarioId,
     destroyStudyWithChildren,
