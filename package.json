@@ -1,7 +1,7 @@
 {
-  "name": "moneybuckets",
+  "name": "dna playground",
   "version": "0.1.0",
-  "description": "matt personal finance",
+  "description": "dna playground",
   "private": true,
   "scripts": {
     "start": "node ./server/bin/www"
@@ -49,6 +49,4 @@
   },
   "author": "Matt Hill",
   "license": "MIT",
-  "bugs": {
-  },
 }
