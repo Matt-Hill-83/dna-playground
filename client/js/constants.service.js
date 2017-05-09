@@ -1,132 +1,132 @@
-"use strict"
-angular.module('app').factory('Constants', [ 'Utilities', Constants_]);
+// "use strict"
+// angular.module('app').factory('Constants', [ 'Utilities', Constants_]);
 
-function Constants_(Utilities) {
-  var tableConfig = {
-    // numColInTable       : 4,
-    numColInTable       : 16,
-    startDate           : '01/01/2017',
-    endDate             : null,
-    dates               : [],
-    timeIntervalDays    : 91,
-    monthTransitionCells: [],
-    yearTransitionCells : [],
-  };
+// function Constants_(Utilities) {
+//   var tableConfig = {
+//     // numColInTable       : 4,
+//     numColInTable       : 16,
+//     startDate           : '01/01/2017',
+//     endDate             : null,
+//     dates               : [],
+//     timeIntervalDays    : 91,
+//     monthTransitionCells: [],
+//     yearTransitionCells : [],
+//   };
 
-  var service = {
-    getLineItemBaseParams,
-    getPaymentBaseParams ,
-    refreshTableConfig,
-    tableConfig,
-    // myRules,
-    // comparators,
-    // conjunctions,
-    tableSettings: {
-      tableInterval: 'monthly',
-    },
-    scenarios  : {},
-    charts     : [{}],
-    chartData: {
-      activeChart: null,
-    }
-  };
+//   var service = {
+//     getLineItemBaseParams,
+//     getPaymentBaseParams ,
+//     refreshTableConfig,
+//     tableConfig,
+//     // myRules,
+//     // comparators,
+//     // conjunctions,
+//     tableSettings: {
+//       tableInterval: 'monthly',
+//     },
+//     scenarios  : {},
+//     charts     : [{}],
+//     chartData: {
+//       activeChart: null,
+//     }
+//   };
 
-  refreshTableConfig();
-  return service;
+//   refreshTableConfig();
+//   return service;
 
-  /////////////////////////////// public functions /////////////////////
+//   /////////////////////////////// public functions /////////////////////
 
-  function getLineItemBaseParams() {
-    return {
-      classes  : [],
-      collapsed: false,
-      name     : 'none',
-      showRow  : true,
-      type     : 'lineItem',
-    };
-  }
+//   function getLineItemBaseParams() {
+//     return {
+//       classes  : [],
+//       collapsed: false,
+//       name     : 'none',
+//       showRow  : true,
+//       type     : 'lineItem',
+//     };
+//   }
 
-  function getPaymentBaseParams() {
-    return {
-      classes: ['cell'],
-    };
-  }
+//   function getPaymentBaseParams() {
+//     return {
+//       classes: ['cell'],
+//     };
+//   }
 
-  function refreshTableConfig() {
-    angular.extend(service.tableConfig, _getTableConfig());
-  }
+//   function refreshTableConfig() {
+//     angular.extend(service.tableConfig, _getTableConfig());
+//   }
 
-  /////////////////////////////// private functions /////////////////////
+//   /////////////////////////////// private functions /////////////////////
 
-  function _getTableConfig() {
-    var tableConfig       = service.tableConfig;
-    tableConfig.startDate = new Date(tableConfig.startDate);
+//   function _getTableConfig() {
+//     var tableConfig       = service.tableConfig;
+//     tableConfig.startDate = new Date(tableConfig.startDate);
 
-    // Back up the start date so that the first day on the charts and tables is the start date.
-    // TODO: hacky, fix this!
-    // tableConfig.startDate = Utilities.addDays(tableConfig.startDate, -(tableConfig.timeIntervalDays -1));
+//     // Back up the start date so that the first day on the charts and tables is the start date.
+//     // TODO: hacky, fix this!
+//     // tableConfig.startDate = Utilities.addDays(tableConfig.startDate, -(tableConfig.timeIntervalDays -1));
 
-    tableConfig.dates = [];
-    for (var i = 0; i < tableConfig.numColInTable; i++) {
-      var lastDayOfFirstInterval =
-        Utilities.addDays(tableConfig.startDate, tableConfig.timeIntervalDays - 1);
-      tableConfig.dates.push(Utilities.addDays(lastDayOfFirstInterval, i * tableConfig.timeIntervalDays));
-    }
+//     tableConfig.dates = [];
+//     for (var i = 0; i < tableConfig.numColInTable; i++) {
+//       var lastDayOfFirstInterval =
+//         Utilities.addDays(tableConfig.startDate, tableConfig.timeIntervalDays - 1);
+//       tableConfig.dates.push(Utilities.addDays(lastDayOfFirstInterval, i * tableConfig.timeIntervalDays));
+//     }
 
-    tableConfig.endDate = Utilities.getLast(tableConfig.dates);
+//     tableConfig.endDate = Utilities.getLast(tableConfig.dates);
 
-    return tableConfig;
-  }
+//     return tableConfig;
+//   }
 
-}
+// }
 
-  // var comparators = [
-  //   {
-  //     index: 0,
-  //     text :'is less than',
-  //   },
-  //   {
-  //     index: 1,
-  //     text :'is equal to',
-  //   },
-  //   {
-  //     index: 2,
-  //     text :'is greater than',
-  //   },
-  // ];
+//   // var comparators = [
+//   //   {
+//   //     index: 0,
+//   //     text :'is less than',
+//   //   },
+//   //   {
+//   //     index: 1,
+//   //     text :'is equal to',
+//   //   },
+//   //   {
+//   //     index: 2,
+//   //     text :'is greater than',
+//   //   },
+//   // ];
 
-  // var conjunctions = [
-  //   {
-  //     index: 0,
-  //     text :'AND',
-  //   },
-  //   {
-  //     index: 1,
-  //     text :'OR',
-  //   },
-  // ];
+//   // var conjunctions = [
+//   //   {
+//   //     index: 0,
+//   //     text :'AND',
+//   //   },
+//   //   {
+//   //     index: 1,
+//   //     text :'OR',
+//   //   },
+//   // ];
 
-  // // obsolete
-  // var myRules = [
-  //   {
-  //     name           : 'from household to reserve',
-  //     sourceGuid     : 645,
-  //     destinationGuid: 640,
-  //     conditions: [
-  //       {
-  //         blockGuid  : 624,
-  //         value      : 0,
-  //         comparator : comparators[2],
-  //         conjunction: conjunctions[0],
-  //       },
-  //       {
-  //         blockGuid  : 625,
-  //         value      : 10000,
-  //         comparator : comparators[0],
-  //         conjunction: null,
-  //       },
+//   // // obsolete
+//   // var myRules = [
+//   //   {
+//   //     name           : 'from household to reserve',
+//   //     sourceGuid     : 645,
+//   //     destinationGuid: 640,
+//   //     conditions: [
+//   //       {
+//   //         blockGuid  : 624,
+//   //         value      : 0,
+//   //         comparator : comparators[2],
+//   //         conjunction: conjunctions[0],
+//   //       },
+//   //       {
+//   //         blockGuid  : 625,
+//   //         value      : 10000,
+//   //         comparator : comparators[0],
+//   //         conjunction: null,
+//   //       },
   
-  //     ],
-  //   },
-  // ];
+//   //     ],
+//   //   },
+//   // ];
 
