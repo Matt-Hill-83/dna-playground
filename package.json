@@ -9,16 +9,13 @@
   "dependencies": {
     "angular-cookies": "^1.5.7",
     "body-parser"    : "~1.15.1",
-    "cookie-parser"  : "^1.4.3",
     "debug"          : "~2.2.0",
     "express"        : "~4.13.4",
     "jquery"         : ">=1.9.0",
     "morgan"         : "~1.7.0",
-    "ng-dialog"      : "^1.0.1",
     "pg-hstore"      : "^2.3.2",
     "pug"            : "^2.0.0-beta11",
     "serve-favicon"  : "~2.3.0",
-    "sortablejs"     : "^1.5.1",
     "swig"           : "^1.4.2"
   },
   "devDependencies": {
