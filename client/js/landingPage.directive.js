@@ -11,7 +11,7 @@ function landingPageController(Table, Constants) {
       '$scope',
       '$q',
       '$http',
-      'Utilities',
+      // 'Utilities',
       LandingPageController
     ],
     controllerAs: 'landingPage',
@@ -23,8 +23,8 @@ function LandingPageController(
   $rootScope,
   $scope,
   $q,
-  $http,
-  Utilities
+  $http
+  // Utilities
   ) { 
   
   vm = this;

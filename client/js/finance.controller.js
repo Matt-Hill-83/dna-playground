@@ -5,7 +5,7 @@ app.controller('FinanceTable', [
 		'$scope',
 		'$http',
 		'ngDialog',
-		'Utilities',
+		// 'Utilities',
 		'$cookies',
 		financeController
 ]);
@@ -14,7 +14,7 @@ function financeController(
 	$scope,
 	$http,
 	ngDialog,
-	Utilities,
+	// Utilities,
 	$cookies
 	) {
 
