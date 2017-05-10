@@ -54289,21 +54289,17 @@ var Drawrnajs = Backbone.View.extend({
 
 
         if(opts.optspanel){
+            // MH: specify my own div to replace withthe 
             var optsEl = opts.optsPanelDiv;
-            // optsEl.className = "box";
-            // var optsEl = document.createElement("div");
-            // this.el.appendChild(optsEl);
             this.optns = new Optspanel({
                 el    : optsEl,
                 struct: this.struct,
                 vis   : this.vis
             });
 
-            // this.optns.el.className = "options-panel";
+            // this.optns.el.classList.add('box');
             this.optns.el.classList.add('options-panel');
-            this.optns.el.classList.add('box');
-            debugger;
-            // this.vis.el.style.width = "70%";
+            // this.optns.el.id = "test-id"
         }
 
 
