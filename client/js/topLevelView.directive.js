@@ -19,6 +19,7 @@ function LandingPageController($rootScope, $scope) {
   vm = this;
   vm.setLineWidth = setLineWidth;
   vm.refreshChart = refreshChart;
+  vm.myButton = myButton;
   vm.lineWidth = 3;
   vm.dna;
 
@@ -29,10 +30,15 @@ function LandingPageController($rootScope, $scope) {
     value: 2
   };
 
-  function refreshChart() {
-    var width = 10;
+  function myButton () {
+    var width = 20;
     setLineWidth(width);
 
+    
+  }
+
+  function refreshChart() {
+    vm.dna.struct.set("renderSwitch", false);
     vm.dna.struct.set("renderSwitch", true);
 
     console.log('refreshing');
@@ -78,7 +84,10 @@ function LandingPageController($rootScope, $scope) {
   }
 
   function setLineWidth(width) {
+    debugger;
     console.log('setting width');
+    console.log(width);
+    
     var dnaGraph = document.getElementById('dna-graph');
 
     vm.dna.optns.struct.attributes.links.models[0].attributes.color = "purple";
@@ -86,6 +95,7 @@ function LandingPageController($rootScope, $scope) {
         item.attributes.color  = "purple";
         item.attributes.weight = width;
     });
+    refreshChart();
 
   }
 

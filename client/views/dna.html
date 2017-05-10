@@ -30,13 +30,13 @@
                     <h2>Line Width</h2>
                     {{dnaPlayground.lineSizePicker.min}}px
                     <input
-                        id     ="line-width"
-                        ng-model="dnaPlayground.lineWidth"
-                        ng-change ="dnaPlayground.setLineWidth()"
-                        type   ="range"
-                        min    ={{dnaPlayground.lineSizePicker.min}}
-                        max    ={{dnaPlayground.lineSizePicker.max}}
-                        value  ={{dnaPlayground.lineSizePicker.value}}/>
+                        id        ="line-width"
+                        ng-model  ="dnaPlayground.lineWidth"
+                        ng-change ="dnaPlayground.setLineWidth({{dnaPlayground.lineWidth}})"
+                        type      ="range"
+                        min       ={{dnaPlayground.lineSizePicker.min}}
+                        max       ={{dnaPlayground.lineSizePicker.max}}
+                        value     ={{dnaPlayground.lineSizePicker.value}}/>
                     {{dnaPlayground.lineSizePicker.max}}px
                     
                     <!-- <h2>Base Size</h2> -->
@@ -45,7 +45,7 @@
 
                 <p id="result"></p>
 
-                <a href="#" ng-click="dnaPlayground.refreshChart()"  class="myButton">refresh</a>
+                <a href="#" ng-click="dnaPlayground.myButton()"  class="myButton">refresh</a>
             </div>
 
             <br><br>
