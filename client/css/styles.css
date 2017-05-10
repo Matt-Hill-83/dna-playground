@@ -27,9 +27,9 @@ header, footer {
 	flex         : 3 1 auto;
 	display      : flex;
 	flex-flow    : row;
-	background   : #bbb;
-	border-radius: 3px;
-	border       : solid 1px #222;
+	background   : white;
+	/*border-radius: 3px;*/
+	/*border       : solid 1px #222;*/
 	margin       : 4px;
 	padding      : 5px;
 }
@@ -45,7 +45,7 @@ section {
 }
 
 .article {
-	background-color: white;	
+	background-color: #f1f5f8;	
 	border-radius   : 3px;
 	border          : solid 1px #222;
 	margin-bottom   : 4px;
@@ -56,7 +56,7 @@ aside {
 	flex         : 0 0 240px;
 	display      : flex;
 	flex-flow    : column;   
-	background   : white;
+	background   : #f1f5f8;
 	border-radius: 3px;
 	border       : solid 1px #222;	
 	margin       : 4px;
@@ -65,7 +65,7 @@ aside {
 
 .box {
 	flex         : 1;
-	background   : ##bdf;
+	background   : #bdf;
 	border-radius: 3px;
 	border       : solid 1px #222;
 	margin       : 4px;
