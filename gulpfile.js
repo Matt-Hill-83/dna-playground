@@ -2,11 +2,11 @@
  * Module Dependencies
  */
 
-var gulp = require('gulp');
-var jshint = require('gulp-jshint');
+var gulp        = require('gulp');
+var jshint      = require('gulp-jshint');
 var browserSync = require('browser-sync');
-var reload = browserSync.reload;
-var nodemon = require('gulp-nodemon');
+var reload      = browserSync.reload;
+var nodemon     = require('gulp-nodemon');
 
 
 /**

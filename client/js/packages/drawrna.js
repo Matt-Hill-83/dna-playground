@@ -50825,18 +50825,23 @@ var ResidueCol = Backbone.Collection.extend({
 
 module.exports = ResidueCol;
 
+///////////////////// zzz - Structure start //////////////////////////////////////////
+
+
 },{"./residue":101,"backbone":1,"underscore":88}],103:[function(require,module,exports){
-var Backbone = require("backbone");
+var Backbone    = require("backbone");
 var parseStruct = require("../utils/parsedbr");
-var Layout = require("../layouts/layout.js");
-var Style = require("../utils/style");
-var Link = require("./link");
-var LinkCol = require("./linkcol");
-var Residue = require("./residue");
-var ResidueCol = require("./residuecol");
+var Layout      = require("../layouts/layout.js");
+var Style       = require("../utils/style");
+var Link        = require("./link");
+var LinkCol     = require("./linkcol");
+var Residue     = require("./residue");
+var ResidueCol  = require("./residuecol");
 
 var Structure = Backbone.Model.extend({
     initialize: function(seq, dotbr, layout){
+      console.log('initialize');
+      
         this.set("seq", seq);
         this.set("dotbr", dotbr);
         this.set("layout", layout);
@@ -50847,32 +50852,34 @@ var Structure = Backbone.Model.extend({
         this.on("change:renderSwitch", this.defineStructure);
     },
     reconstruct: function(){
+      console.log('reconstruct');
         //This function is used to update String/Dot-Bracket Notation
-    	//after a hbond was inserted
-    	var seq = "";
-    	var dotbr = [];
-    	var partner;
+      //after a hbond was inserted
+      var seq = "";
+      var dotbr = [];
+      var partner;
         var res = this.get("residues");
 
-    	for(var i=0; i<res.length; i++){
-    		seq += res.at(i).get("name");
-    		partner = this.getPartner(i.toString());
-    		if(partner === -1){
-    			dotbr[i] = ".";
-    		}
-    		else if(partner > i){
-    			dotbr[i] = "(";
-    			dotbr[partner] = ")";
-    		}
-    		else {
-    			continue;
-    		}
-    	}
+      for(var i=0; i<res.length; i++){
+        seq += res.at(i).get("name");
+        partner = this.getPartner(i.toString());
+        if(partner === -1){
+          dotbr[i] = ".";
+        }
+        else if(partner > i){
+          dotbr[i] = "(";
+          dotbr[partner] = ")";
+        }
+        else {
+          continue;
+        }
+      }
         this.set("seq", seq);
         this.set("dotbr", dotbr.join(""));
         this.set("renderSwitch", !this.get("renderSwitch"));
     },
     defineStructure: function(){
+      console.log('define');
         var seq = this.get("seq"),
             dotbr = this.get("dotbr"),
             layout = this.get("layout"),
@@ -50908,80 +50915,84 @@ var Structure = Backbone.Model.extend({
         this.set("links", linkCol);
         this.listenTo(this.get("links"), "update", this.reconstruct);
     },
+
     toCytoscape: function(){
         //Create a JSON structure from a graph object built by the
-    	//transformDotBracket function
-    	//The JSON structure fits the requirements of CytoscapeJS
-    	var elements = [];
-    	var el;
+      //transformDotBracket function
+      //The JSON structure fits the requirements of CytoscapeJS
+      var elements = [];
+      var el;
 
-    	var nodes = this.get("residues");
-    	for(var i = 0; i < nodes.length; i++){
+      var nodes = this.get("residues");
+      for(var i = 0; i < nodes.length; i++){
             el = nodes.at(i);
-    		elements.push({
-    			group: el.get("group"),
-    			data: {
-    				id: el.get("id"),
-    				label: el.get("name"),
+        elements.push({
+          group: el.get("group"),
+          data: {
+            id: el.get("id"),
+            label: el.get("name"),
                     type: "residue"
-    			},
-    			position: {
-    				x: el.get("x"),
-    				y: el.get("y")
-    			},
-    			selected: el.get("selected"),
-    			selectable: el.get("selectable"),
-    			locked: el.get("locked"),
-    			grabbable: el.get("grabbable"),
-    			css: {
-    				'background-color': el.get("color")
-    			}
-    		});
-    	}
-    	var links = this.get("links");
-    	for(var i = 0; i < links.length; i++){
-    		el = links.at(i);
+          },
+          position: {
+            x: el.get("x"),
+            y: el.get("y")
+          },
+          selected: el.get("selected"),
+          selectable: el.get("selectable"),
+          locked: el.get("locked"),
+          grabbable: el.get("grabbable"),
+          css: {
+            'background-color': el.get("color")
+          }
+        });
+      }
+      var links = this.get("links");
+      for(var i = 0; i < links.length; i++){
+        el = links.at(i);
             elements.push({
-    			group: el.get("group"),
-    			data: {
-    				id: el.get("id"),
-    				source: el.get("source"),
-        			target: el.get("target"),
-        			label: el.get("label"),
-        			weight: el.get("weight")
-    			},
-    			css: {
-    				'line-color': el.get("color"),
-    				'width': el.get("weight")
-    			}
-    		});
-    	}
-    	return elements;
+          group: el.get("group"),
+          data: {
+            id: el.get("id"),
+            source: el.get("source"),
+              target: el.get("target"),
+              label: el.get("label"),
+              weight: el.get("weight")
+          },
+          css: {
+            'line-color': el.get("color"),
+            'width': el.get("weight")
+          }
+        });
+      }
+      return elements;
     },
     getPartner: function(srcIndex){
-    	//Returns the partner of a nucleotide:
-    	//-1 means there is no partner
+      //Returns the partner of a nucleotide:
+      //-1 means there is no partner
         var links = this.get("links");
-    	var partner = -1;
+      var partner = -1;
 
-    	for(var i=0; i<links.length; i++){
-    		if(links.at(i).get("label") !== "phosphodiester"){
-    			if(links.at(i).get("source") === srcIndex){
-    				partner = links.at(i).get("target");
-    				break;
-    			}
-    			else if(links.at(i).get("target") === srcIndex){
-    				partner = links.at(i).get("source");
-    				break;
-    			}
-    			else {
-    				continue;
-    			}
-    		}
-    	}
-    	return partner;
+      for(var i=0; i<links.length; i++){
+        if(links.at(i).get("label") !== "phosphodiester"){
+          if(links.at(i).get("source") === srcIndex){
+            partner = links.at(i).get("target");
+            break;
+          }
+          else if(links.at(i).get("target") === srcIndex){
+            partner = links.at(i).get("source");
+            break;
+          }
+          else {
+            continue;
+          }
+        }
+      }
+      return partner;
     }
 });
+
+
+///////////////////////////////////////////////////////////////
 
 module.exports = Structure;
 
@@ -54282,10 +54293,14 @@ var Drawrnajs = Backbone.View.extend({
         }
     },
     render: function(){
+      console.log('rendering structure');
+      
         if(this.seq){
+            console.log('rendering seq');
             this.seq.render();
         }
         if(this.optns){
+            console.log('rendering optns');
             this.optns.render();
         }
         this.vis.render();

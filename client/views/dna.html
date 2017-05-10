@@ -2,16 +2,25 @@
 
 <script>
 	
-var yourDiv = document.getElementById('snippetDiv');
-var Rna = require("drawrnajs");
+var mainDiv = document.getElementById('snippetDiv');
+var Rna     = require("drawrnajs");
 
 
 var input = [
     "CAGCACGACACUAGCAGUCAGUGUCAGACUGCAWACAGCACGACACUAGCAGUCAGUGUCAGACUGCAWACAGCACGACACUAGCAGUCAGUGUCAGACUGCAWA",
     "..(((((...(((((...(((((...(((((.....)))))...))))).....(((((...(((((.....)))))...))))).....)))))...))))).."
 ];
+
+
+
+var input = [
+    "TTGGGGGGACTGGGGCTCCCATTCGTTGCCTTTATAAATCCTTGCAAGCCAATTAACAGGTTGGTGAGGG GCTTGGGTGAAAAGGTGCTTAAGACTCCGT",
+    "...(((((.(...).)))))........(((((.....((..(.((((((..(((.((...)).)))..)))))).).)))))))..............."
+];
+
+
 var app = new Rna({
-    el       : yourDiv,
+    el       : mainDiv,
     seq      : input[0],
     dotbr    : input[1],
     layout   : "naview",
