@@ -24247,7 +24247,6 @@ this.cytoscape = cytoscape;
       }
 
     } else if (rs.edgeType == 'bezier') {
-      // if( window.badArrow) debugger;
       var cp = [rs.cp2x, rs.cp2y];
 
       intersect = CanvasRenderer.nodeShapes[
@@ -24305,9 +24304,6 @@ this.cytoscape = cytoscape;
       rs.arrowStartX = arrowStart[0];
       rs.arrowStartY = arrowStart[1];
 
-      // if( isNaN(rs.startX) || isNaN(rs.startY) ){
-      //   debugger;
-      // }
 
     } else if (rs.isArcEdge) {
       return;
@@ -24651,8 +24647,6 @@ this.cytoscape = cytoscape;
       drawArrowhead( 'source', startX, startY, dispX, dispY );
 
     } else {
-      // window.badArrow = true;
-      // debugger;
     }
 
     var midX = rs.midX;
@@ -29794,20 +29788,6 @@ this.cytoscape = cytoscape;
           return epos;
         }
 
-        // var succs = successors[ ele.id() ];
-        // if( succs ){
-        //   epos.x = 0;
-        //
-        //   for( var i = 0 ; i < succs.length; i++ ){
-        //     var spos = pos[ succs[i].id() ];
-        //
-        //     epos.x += spos.x;
-        //   }
-        //
-        //   epos.x /= succs.length;
-        // } else {
-        //   //debugger;
-        // }
 
         return epos;
 
@@ -50879,6 +50859,7 @@ var Structure = Backbone.Model.extend({
         this.set("renderSwitch", !this.get("renderSwitch"));
     },
     defineStructure: function(){
+      debugger;
       console.log('define');
         var seq = this.get("seq"),
             dotbr = this.get("dotbr"),
@@ -54264,7 +54245,6 @@ var Drawrnajs = Backbone.View.extend({
       
         var layout = opts.layout || "naview";
         this.struct = new Structure(opts.seq, opts.dotbr, layout);
-        // this.el = opts.el;
         //views
         //sequence input panel
         if(opts.seqpanel){
@@ -54297,7 +54277,7 @@ var Drawrnajs = Backbone.View.extend({
             // MH: Add my own class to the new div.
             this.optns.el.classList.add('options-panel');
             // MH: Change the div id so that it does not use the previous css associated with that id.
-            this.optns.el.id = "test-id"
+            this.optns.el.id = "";
         }
 
 

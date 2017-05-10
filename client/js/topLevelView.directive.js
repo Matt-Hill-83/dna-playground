@@ -17,21 +17,23 @@ function LandingPageController($rootScope, $scope) {
   ];
 
   vm = this;
+  vm.setLineWidth = setLineWidth;
+  vm.refreshChart = refreshChart;
+  vm.lineWidth = 3;
+  vm.dna;
 
   vm.lineSizePicker = {
-    id   :"price",
-    type :"range",
-    min  :0,
-    max  :10,
+    id   : "price",
+    min  : 0,
+    max  : 10,
     value: 2
   };
 
-  var lineWidthPicker = document.getElementById("line-width");
-      res = document.getElementById("result");
-
-  lineWidthPicker.addEventListener("input", function() {
-      res.innerHTML = lineWidthPicker.value;
-  }, false); 
+  function refreshChart() {
+    debugger;
+    console.log('refreshing');
+  }
+  
 
   var testDiv1          = document.getElementById('matt_1');
   var dnaGraph          = document.getElementById('dna-graph');
@@ -44,13 +46,18 @@ function LandingPageController($rootScope, $scope) {
   dnaGraph.style.height          = dnaGraphHeight;
 
   init(input);
-  
+
+  // var lineWidthPicker = document.getElementById("line-width");
+
+  var width = 1;
+  setLineWidth(width);
+
+
   ///////////////
 
   function init(input) {
     var Dna = require("drawrnajs");
-    var dna = new Dna({
-        // el          : null,
+    vm.dna = new Dna({
         testEl1     : testDiv1,
         dnaGraphDiv : dnaGraph,
         optsPanelDiv: colorControls,
@@ -62,22 +69,24 @@ function LandingPageController($rootScope, $scope) {
         resindex    : true
     });
 
-    var width = 3;
-    setLineWidth(width, dna);
+    // var width = 10;
+    // setLineWidth(width);
 
-    dna.render();
-
+    vm.dna.render();
   }
 
-  function setLineWidth(width, dna) {
-    dna.optns.struct.attributes.links.models[0].attributes.color = "purple";
-    dna.optns.struct.attributes.links.models.map((item)=> {
+  function setLineWidth(width) {
+    console.log('setting width');
+    var dnaGraph = document.getElementById('dna-graph');
+
+    vm.dna.optns.struct.attributes.links.models[0].attributes.color = "purple";
+    vm.dna.optns.struct.attributes.links.models.map((item)=> {
         item.attributes.color  = "purple";
         item.attributes.weight = width;
     });
-    // dna.render();
 
   }
+
 
 
 }
