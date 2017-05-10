@@ -54264,14 +54264,14 @@ var Drawrnajs = Backbone.View.extend({
       
         var layout = opts.layout || "naview";
         this.struct = new Structure(opts.seq, opts.dotbr, layout);
-        this.el = opts.el;
+        // this.el = opts.el;
         //views
         //sequence input panel
         if(opts.seqpanel){
             var seqEl = opts.testEl1;
             this.seq = new Seqpanel({
                 struct: this.struct,
-                el: seqEl
+                el    : seqEl
             })
         }
 
@@ -54279,8 +54279,8 @@ var Drawrnajs = Backbone.View.extend({
         var visEl = opts.dnaGraphDiv;
         visEl.className = "cy";
         this.vis = new Vispanel({
-            el: visEl,
-            struct: this.struct,
+            el      : visEl,
+            struct  : this.struct,
             resindex: opts.resindex
         });
 
