@@ -30,7 +30,11 @@ function LandingPageController($rootScope, $scope) {
   };
 
   function refreshChart() {
-    debugger;
+    var width = 10;
+    setLineWidth(width);
+
+    vm.dna.struct.set("renderSwitch", true);
+
     console.log('refreshing');
   }
   
@@ -47,10 +51,8 @@ function LandingPageController($rootScope, $scope) {
 
   init(input);
 
-  // var lineWidthPicker = document.getElementById("line-width");
-
-  var width = 1;
-  setLineWidth(width);
+  // var width = 1;
+  // setLineWidth(width);
 
 
   ///////////////
@@ -69,8 +71,8 @@ function LandingPageController($rootScope, $scope) {
         resindex    : true
     });
 
-    // var width = 10;
-    // setLineWidth(width);
+    var width = 1;
+    setLineWidth(width);
 
     vm.dna.render();
   }
