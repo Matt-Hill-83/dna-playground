@@ -11,12 +11,18 @@ function landingPageController(Table, Constants) {
 }
 
 function LandingPageController($rootScope, $scope) {
-  
   vm = this;
+
   var input = [
       "TTGGGGGGACTGGGGCTCCCATTCGTTGCCTTTATAAATCCTTGCAAGCCAATTAACAGGTTGGTGAGGGGCTTGGGTGAAAAGGTGCTTAAGACTCCGT",
       "...(((((.(...).)))))........(((((.....((..(.((((((..(((.((...)).)))..)))))).).)))))))..............."
   ];
+
+    // var input = [
+    //     "CAGCACGACACUAGCAGUCAGUGUCAGACUGCAWACAGCACGACACUAGCAGUCAGUGUCAGACUGCAWACAGCACGACACUAGCAGUCAGUGUCAGACUGCAWA",
+    //     "..(((((...(((((...(((((...(((((.....)))))...))))).....(((((...(((((.....)))))...))))).....)))))...))))).."
+    // ];
+
 
   init(input);
 
@@ -25,16 +31,11 @@ function LandingPageController($rootScope, $scope) {
   function init(input) {
     var mainDiv  = document.getElementById('snippetDiv');
     var testDiv1 = document.getElementById('matt_1');
-    var testDiv2 = document.getElementById('matt-2');
+    var testDiv2 = document.getElementById('dna-graph');
     var colorControls = document.getElementById('color-controls');
 
     var Dna     = require("drawrnajs");
 
-
-    // var input = [
-    //     "CAGCACGACACUAGCAGUCAGUGUCAGACUGCAWACAGCACGACACUAGCAGUCAGUGUCAGACUGCAWACAGCACGACACUAGCAGUCAGUGUCAGACUGCAWA",
-    //     "..(((((...(((((...(((((...(((((.....)))))...))))).....(((((...(((((.....)))))...))))).....)))))...))))).."
-    // ];
 
 
 
