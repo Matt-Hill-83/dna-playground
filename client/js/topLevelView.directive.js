@@ -25,7 +25,7 @@ function LandingPageController($rootScope, $scope) {
   function init(input) {
     var mainDiv  = document.getElementById('snippetDiv');
     var testDiv1 = document.getElementById('matt_1');
-    var testDiv2 = document.getElementById('matt_2');
+    var testDiv2 = document.getElementById('matt-2');
     var colorControls = document.getElementById('color-controls');
 
     var Dna     = require("drawrnajs");
