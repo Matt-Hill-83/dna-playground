@@ -54290,17 +54290,23 @@ var Drawrnajs = Backbone.View.extend({
 
         if(opts.optspanel){
             var optsEl = opts.optsPanelDiv;
+            // optsEl.className = "box";
             // var optsEl = document.createElement("div");
             // this.el.appendChild(optsEl);
             this.optns = new Optspanel({
-                el: optsEl,
+                el    : optsEl,
                 struct: this.struct,
-                vis: this.vis
+                vis   : this.vis
             });
+
+            // this.optns.el.className = "options-panel";
+            this.optns.el.classList.add('options-panel');
+            this.optns.el.classList.add('box');
+            debugger;
             // this.vis.el.style.width = "70%";
         }
 
-        
+
     },
     render: function(){
       console.log('rendering structure');
@@ -54311,6 +54317,13 @@ var Drawrnajs = Backbone.View.extend({
         }
         if(this.optns){
             console.log('rendering optns');
+
+            console.log('|++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++|');
+            console.log('this.optns: ');
+            console.log(this.optns);
+            console.log('|------------------------------------------------------------------------------------------------|')
+            
+            
             this.optns.render();
         }
         this.vis.render();
