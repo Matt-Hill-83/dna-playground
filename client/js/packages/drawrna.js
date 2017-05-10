@@ -54269,18 +54269,15 @@ var Drawrnajs = Backbone.View.extend({
         //sequence input panel
         if(opts.seqpanel){
             var seqEl = opts.testEl1;
-            // var seqEl = document.createElement("div");
-            // this.el.appendChild(seqEl);
             this.seq = new Seqpanel({
                 struct: this.struct,
                 el: seqEl
             })
         }
+        
         //main view
         var visEl = opts.testEl2;
-        // var visEl = document.createElement("div")
         visEl.className = "cy";
-        // this.el.appendChild(visEl);
         this.vis = new Vispanel({
             el: visEl,
             struct: this.struct,
@@ -54289,7 +54286,7 @@ var Drawrnajs = Backbone.View.extend({
 
 
         if(opts.optspanel){
-            // MH: specify my own div to replace withthe 
+            // MH: Specify my own div to be replaced with the options panel.
             var optsEl = opts.optsPanelDiv;
             this.optns = new Optspanel({
                 el    : optsEl,
@@ -54297,9 +54294,10 @@ var Drawrnajs = Backbone.View.extend({
                 vis   : this.vis
             });
 
-            // this.optns.el.classList.add('box');
+            // MH: Add my own class to the new div.
             this.optns.el.classList.add('options-panel');
-            // this.optns.el.id = "test-id"
+            // MH: Change the div id so that it does not use the previous css associated with that id.
+            this.optns.el.id = "test-id"
         }
 
 

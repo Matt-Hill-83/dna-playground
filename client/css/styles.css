@@ -116,12 +116,12 @@ aside {
 
 /*//////////////////////////////////////*/
 
-.boxcontainer-fluid {
-	width: 100% !important; 
-}
-
 .options-panel {
 	width: 100%;
+}
+
+.options-panel div div {
+	z-index: 100;
 }
 
 #matt-2 {
