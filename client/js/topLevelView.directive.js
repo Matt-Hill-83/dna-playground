@@ -6,11 +6,8 @@ function landingPageController(Table, Constants) {
     restrict   : 'E',
     templateUrl: 'views/dna.html',
     controller : [
-      '$filter',
       '$rootScope',
       '$scope',
-      '$q',
-      '$http',
       LandingPageController
     ],
     controllerAs: 'landingPage',
@@ -18,11 +15,8 @@ function landingPageController(Table, Constants) {
 }
 
 function LandingPageController(
-  $filter,
   $rootScope,
-  $scope,
-  $q,
-  $http
+  $scope
   ) { 
   
   vm = this;
