@@ -18,10 +18,10 @@ function LandingPageController($rootScope, $scope) {
       "...(((((.(...).)))))........(((((.....((..(.((((((..(((.((...)).)))..)))))).).)))))))..............."
   ];
 
-    // var input = [
-    //     "CAGCACGACACUAGCAGUCAGUGUCAGACUGCAWACAGCACGACACUAGCAGUCAGUGUCAGACUGCAWACAGCACGACACUAGCAGUCAGUGUCAGACUGCAWA",
-    //     "..(((((...(((((...(((((...(((((.....)))))...))))).....(((((...(((((.....)))))...))))).....)))))...))))).."
-    // ];
+    var input = [
+        "CAGCACGACACUAGCAGUCAGUGUCAGACUGCAWACAGCACGACACUAGCAGUCAGUGUCAGACUGCAWACAGCACGACACUAGCAGUCAGUGUCAGACUGCAWA",
+        "..(((((...(((((...(((((...(((((.....)))))...))))).....(((((...(((((.....)))))...))))).....)))))...))))).."
+    ];
 
 
   init(input);
@@ -29,9 +29,9 @@ function LandingPageController($rootScope, $scope) {
   ///////////////
 
   function init(input) {
-    var mainDiv  = document.getElementById('snippetDiv');
+    // var mainDiv  = document.getElementById('snippetDiv');
     var testDiv1 = document.getElementById('matt_1');
-    var testDiv2 = document.getElementById('dna-graph');
+    var dnaGraph = document.getElementById('dna-graph');
     var colorControls = document.getElementById('color-controls');
 
     var Dna     = require("drawrnajs");
@@ -42,9 +42,9 @@ function LandingPageController($rootScope, $scope) {
 
 
     var dna = new Dna({
-        el              : mainDiv,
+        el              : null,
         testEl1         : testDiv1,
-        testEl2         : testDiv2,
+        dnaGraphDiv         : dnaGraph,
         optsPanelDiv: colorControls,
         seq             : input[0],
         dotbr           : input[1],
@@ -60,6 +60,8 @@ function LandingPageController($rootScope, $scope) {
     console.log(dna);
     console.log(dna.optns.struct.attributes.links.models[0].attributes);
     console.log('|------------------------------------------------------------------------------------------------|')
+
+
 
     dna.optns.struct.attributes.links.models[0].attributes.color = "purple";
     dna.optns.struct.attributes.links.models.map((item)=> {

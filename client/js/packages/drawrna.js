@@ -54245,10 +54245,10 @@ module.exports = Vispanel;
 ///////////////////////////// zzz - Drawrna start //////////////////////////////////////////
 
 },{"../models/link":98,"../utils/style":107,"./annoview":108,"backbone":1,"cytoscape":21,"cytoscape-edgehandles":20,"jquery":27}],"drawrnajs":[function(require,module,exports){
-var Backbone = require("backbone");
+var Backbone  = require("backbone");
 var Structure = require("./models/structure");
-var Vispanel = require("./views/vispanel");
-var Seqpanel = require("./views/seqpanel");
+var Vispanel  = require("./views/vispanel");
+var Seqpanel  = require("./views/seqpanel");
 var Optspanel = require("./views/optspanel");
 
 var Drawrnajs = Backbone.View.extend({
@@ -54274,9 +54274,9 @@ var Drawrnajs = Backbone.View.extend({
                 el: seqEl
             })
         }
-        
+
         //main view
-        var visEl = opts.testEl2;
+        var visEl = opts.dnaGraphDiv;
         visEl.className = "cy";
         this.vis = new Vispanel({
             el: visEl,
