@@ -30,17 +30,12 @@ function LandingPageController($rootScope, $scope) {
 
   function init(input) {
     // var mainDiv  = document.getElementById('snippetDiv');
-    var testDiv1 = document.getElementById('matt_1');
-    var dnaGraph = document.getElementById('dna-graph');
-    var colorControls = document.getElementById('color-controls');
+    var testDiv1          = document.getElementById('matt_1');
+    var dnaGraph          = document.getElementById('dna-graph');
+    var dnaGraphContainer = document.getElementById('dna-graph-container');
+    var colorControls     = document.getElementById('color-controls');
 
-    var Dna     = require("drawrnajs");
-
-
-
-
-
-
+    var Dna = require("drawrnajs");
     var dna = new Dna({
         el              : null,
         testEl1         : testDiv1,
@@ -52,7 +47,7 @@ function LandingPageController($rootScope, $scope) {
         seqpanel        : true,
         optspanel       : true,
         resindex        : true
-    })
+    });
 
 
     console.log('|++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++|');
@@ -69,9 +64,12 @@ function LandingPageController($rootScope, $scope) {
         item.attributes.weight = 1;
     });
 
-    dna.render();
+    var test = dna.render();
 
-
+    // Set outer div height after page is rendered.
+    var dnaGraphHeight             = "900px";
+    dnaGraphContainer.style.height = dnaGraphHeight;
+    dnaGraph.style.height          = dnaGraphHeight;
   }
 
 }
