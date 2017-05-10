@@ -13,14 +13,22 @@ function landingPageController(Table, Constants) {
 function LandingPageController($rootScope, $scope) {
   
   vm = this;
+  var input = [
+      "TTGGGGGGACTGGGGCTCCCATTCGTTGCCTTTATAAATCCTTGCAAGCCAATTAACAGGTTGGTGAGGGGCTTGGGTGAAAAGGTGCTTAAGACTCCGT",
+      "...(((((.(...).)))))........(((((.....((..(.((((((..(((.((...)).)))..)))))).).)))))))..............."
+  ];
 
-  init();
+  init(input);
 
   ///////////////
 
-  function init() {
-    var mainDiv = document.getElementById('snippetDiv');
-    var Rna     = require("drawrnajs");
+  function init(input) {
+    var mainDiv  = document.getElementById('snippetDiv');
+    var testDiv1 = document.getElementById('matt_1');
+    var testDiv2 = document.getElementById('matt_2');
+    var colorControls = document.getElementById('color-controls');
+
+    var Dna     = require("drawrnajs");
 
 
     // var input = [
@@ -30,37 +38,36 @@ function LandingPageController($rootScope, $scope) {
 
 
 
-    var input = [
-        "TTGGGGGGACTGGGGCTCCCATTCGTTGCCTTTATAAATCCTTGCAAGCCAATTAACAGGTTGGTGAGGG GCTTGGGTGAAAAGGTGCTTAAGACTCCGT",
-        "...(((((.(...).)))))........(((((.....((..(.((((((..(((.((...)).)))..)))))).).)))))))..............."
-    ];
 
 
-    var app = new Rna({
-        el       : mainDiv,
-        seq      : input[0],
-        dotbr    : input[1],
-        layout   : "naview",
-        seqpanel : true,
-        optspanel: true,
-        resindex : true
+    var dna = new Dna({
+        el              : mainDiv,
+        testEl1         : testDiv1,
+        testEl2         : testDiv2,
+        optsPanelDiv: colorControls,
+        seq             : input[0],
+        dotbr           : input[1],
+        layout          : "naview",
+        seqpanel        : true,
+        optspanel       : true,
+        resindex        : true
     })
 
 
     console.log('|++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++|');
-    console.log('app: ');
-    console.log(app);
-    console.log(app.optns.struct.attributes.links.models[0].attributes);
+    console.log('dna: ');
+    console.log(dna);
+    console.log(dna.optns.struct.attributes.links.models[0].attributes);
     console.log('|------------------------------------------------------------------------------------------------|')
 
-    app.optns.struct.attributes.links.models[0].attributes.color = "purple";
-    app.optns.struct.attributes.links.models.map((item)=> {
+    dna.optns.struct.attributes.links.models[0].attributes.color = "purple";
+    dna.optns.struct.attributes.links.models.map((item)=> {
         item.attributes.color = "purple";
         item.attributes.weight = 1;
     });
 
-    app.render();
-    
+    dna.render();
+
 
   }
 
