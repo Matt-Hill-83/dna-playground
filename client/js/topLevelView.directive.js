@@ -19,52 +19,52 @@ function LandingPageController($rootScope, $scope) {
   vm = this;
 
   vm.lineSizePicker = {
-    id   : "price",
-    type : "range",
-    min  : 0,
-    max  : 10,
+    id   :"price",
+    type :"range",
+    min  :0,
+    max  :10,
     value: 2
   };
 
   var lineWidthPicker = document.getElementById("line-width");
+      res = document.getElementById("result");
+
   lineWidthPicker.addEventListener("input", function() {
-      // lineWidth.innerHTML = lineWidthPicker.value;
-    setLineWidth(lineWidthPicker.value);
+      res.innerHTML = lineWidthPicker.value;
+
+
+
   }, false); 
 
-  var dna = init(input);
-
-  // var lineWidth       = document.getElementById("result");
-
+  init(input);
 
   ///////////////
 
-  function init(input) {
-    var testDiv1      = document.getElementById('matt_1');
-    var dnaGraph      = document.getElementById('dna-graph');
-    var colorControls = document.getElementById('color-controls');
 
+
+  function init(input) {
+    // var mainDiv  = document.getElementById('snippetDiv');
+    var testDiv1          = document.getElementById('matt_1');
+    var dnaGraph          = document.getElementById('dna-graph');
     var dnaGraphContainer = document.getElementById('dna-graph-container');
+    var colorControls     = document.getElementById('color-controls');
 
     var Dna = require("drawrnajs");
     var dna = new Dna({
-        el          : null,
-        testEl1     : testDiv1,
-        dnaGraphDiv : dnaGraph,
+        el              : null,
+        testEl1         : testDiv1,
+        dnaGraphDiv         : dnaGraph,
         optsPanelDiv: colorControls,
-        seq         : input[0],
-        dotbr       : input[1],
-        layout      : "naview",
-        seqpanel    : true,
-        optspanel   : true,
-        resindex    : true
+        seq             : input[0],
+        dotbr           : input[1],
+        layout          : "naview",
+        seqpanel        : true,
+        optspanel       : true,
+        resindex        : true
     });
 
-    console.log('|++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++|');
-    console.log('dna: ');
-    console.log(dna);
-    console.log(dna.optns.struct.attributes.links.models[0].attributes);
-    console.log('|------------------------------------------------------------------------------------------------|')
+    var width = 3;
+    setLineWidth(width, dna);
 
     dna.render();
 
@@ -72,24 +72,23 @@ function LandingPageController($rootScope, $scope) {
     var dnaGraphHeight             = "900px";
     dnaGraphContainer.style.height = dnaGraphHeight;
     dnaGraph.style.height          = dnaGraphHeight;
-
-    return dna;
   }
 
-  function setLineWidth(width) {
-
+  function setLineWidth(width, dna) {
     console.log('|++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++|');
-    console.log('width: ');
-    console.log(width);
-    console.log(parseInt(width));
+    console.log('dna: ');
+    console.log(dna);
+    console.log(dna.optns.struct.attributes.links.models[0].attributes);
     console.log('|------------------------------------------------------------------------------------------------|')
-    
-    debugger;
-    // dna.optns.struct.attributes.links.models[0].attributes.color = "red";
+
+
+
+    dna.optns.struct.attributes.links.models[0].attributes.color = "purple";
     dna.optns.struct.attributes.links.models.map((item)=> {
-        item.attributes.color  = "red";
-        item.attributes.weight = parseInt(width);
+        item.attributes.color  = "purple";
+        item.attributes.weight = width;
     });
+
   }
 
 
