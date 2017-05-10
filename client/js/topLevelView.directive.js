@@ -6,49 +6,59 @@ function landingPageController(Table, Constants) {
     restrict    : 'E',
     templateUrl : 'views/dna.html',
     controller  : ['$rootScope', '$scope', LandingPageController],
-    controllerAs: 'landingPage',
+    controllerAs: 'dnaPlayground',
   };
 }
 
 function LandingPageController($rootScope, $scope) {
-  vm = this;
-
   var input = [
-      "TTGGGGGGACTGGGGCTCCCATTCGTTGCCTTTATAAATCCTTGCAAGCCAATTAACAGGTTGGTGAGGGGCTTGGGTGAAAAGGTGCTTAAGACTCCGT",
-      "...(((((.(...).)))))........(((((.....((..(.((((((..(((.((...)).)))..)))))).).)))))))..............."
+      "CAGCACGACACUAGCAGUCAGUGUCAGACUGCAWACAGCACGACACUAGCAGUCAGUGUCAGACUGCAWACAGCACGACACUAGCAGUCAGUGUCAGACUGCAWA",
+      "..(((((...(((((...(((((...(((((.....)))))...))))).....(((((...(((((.....)))))...))))).....)))))...))))).."
   ];
 
-    var input = [
-        "CAGCACGACACUAGCAGUCAGUGUCAGACUGCAWACAGCACGACACUAGCAGUCAGUGUCAGACUGCAWACAGCACGACACUAGCAGUCAGUGUCAGACUGCAWA",
-        "..(((((...(((((...(((((...(((((.....)))))...))))).....(((((...(((((.....)))))...))))).....)))))...))))).."
-    ];
+  vm = this;
 
+  vm.lineSizePicker = {
+    id   : "price",
+    type : "range",
+    min  : 0,
+    max  : 10,
+    value: 2
+  };
 
-  init(input);
+  var lineWidthPicker = document.getElementById("line-width");
+  lineWidthPicker.addEventListener("input", function() {
+      // lineWidth.innerHTML = lineWidthPicker.value;
+    setLineWidth(lineWidthPicker.value);
+  }, false); 
+
+  var dna = init(input);
+
+  // var lineWidth       = document.getElementById("result");
+
 
   ///////////////
 
   function init(input) {
-    // var mainDiv  = document.getElementById('snippetDiv');
-    var testDiv1          = document.getElementById('matt_1');
-    var dnaGraph          = document.getElementById('dna-graph');
+    var testDiv1      = document.getElementById('matt_1');
+    var dnaGraph      = document.getElementById('dna-graph');
+    var colorControls = document.getElementById('color-controls');
+
     var dnaGraphContainer = document.getElementById('dna-graph-container');
-    var colorControls     = document.getElementById('color-controls');
 
     var Dna = require("drawrnajs");
     var dna = new Dna({
-        el              : null,
-        testEl1         : testDiv1,
-        dnaGraphDiv         : dnaGraph,
+        el          : null,
+        testEl1     : testDiv1,
+        dnaGraphDiv : dnaGraph,
         optsPanelDiv: colorControls,
-        seq             : input[0],
-        dotbr           : input[1],
-        layout          : "naview",
-        seqpanel        : true,
-        optspanel       : true,
-        resindex        : true
+        seq         : input[0],
+        dotbr       : input[1],
+        layout      : "naview",
+        seqpanel    : true,
+        optspanel   : true,
+        resindex    : true
     });
-
 
     console.log('|++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++|');
     console.log('dna: ');
@@ -56,21 +66,32 @@ function LandingPageController($rootScope, $scope) {
     console.log(dna.optns.struct.attributes.links.models[0].attributes);
     console.log('|------------------------------------------------------------------------------------------------|')
 
-
-
-    dna.optns.struct.attributes.links.models[0].attributes.color = "purple";
-    dna.optns.struct.attributes.links.models.map((item)=> {
-        item.attributes.color = "purple";
-        item.attributes.weight = 1;
-    });
-
-    var test = dna.render();
+    dna.render();
 
     // Set outer div height after page is rendered.
     var dnaGraphHeight             = "900px";
     dnaGraphContainer.style.height = dnaGraphHeight;
     dnaGraph.style.height          = dnaGraphHeight;
+
+    return dna;
   }
+
+  function setLineWidth(width) {
+
+    console.log('|++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++|');
+    console.log('width: ');
+    console.log(width);
+    console.log(parseInt(width));
+    console.log('|------------------------------------------------------------------------------------------------|')
+    
+    debugger;
+    // dna.optns.struct.attributes.links.models[0].attributes.color = "red";
+    dna.optns.struct.attributes.links.models.map((item)=> {
+        item.attributes.color  = "red";
+        item.attributes.weight = parseInt(width);
+    });
+  }
+
 
 }
 

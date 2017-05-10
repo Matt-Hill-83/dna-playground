@@ -1,8 +1,4 @@
 <div class="flex-container">
-    <!-- <header> -->
-        <!-- <h1>DNA Playground</h1> -->
-    <!-- </header> -->
-
     <div class="bounding-container">
             <div class = "article">
             Plesiosaur mitochondrial fragment #ALH84001
@@ -24,24 +20,31 @@
         </section>
 
         <aside>
-            <h1>Controls</h1>
             <div class="box">
+                <h2>Node Manipulation</h2>
                 <div id='color-controls'></div>
             </div>
 
-            <h1>Custom</h1>
-            <h1>Controls</h1>
-            <div class="box">empty</div>
-            
-            <div style="margin-top: 1em">
-                <h2>Line Width</h2>
-                <h2>Base Size</h2>
-                $51<input id="price" type="range" min="51" max="360" value="" />$360
+            <div class="box">
+                <div style="margin-top: 1em">
+                    <h2>Line Width</h2>
+                    {{dnaPlayground.lineSizePicker.min}}px
+                    <input
+                        id   ="line-width"
+                        type ={{dnaPlayground.lineSizePicker.type}}
+                        min  ={{dnaPlayground.lineSizePicker.min}}
+                        max  ={{dnaPlayground.lineSizePicker.max}}
+                        value={{dnaPlayground.lineSizePicker.value}}/>
+                    {{dnaPlayground.lineSizePicker.max}}px
+                    
+                    <!-- <h2>Base Size</h2> -->
+                    <!-- $51<input id="price" type="range" min="51" max="360" value="" />$360 -->
+                </div>
+
+                <p id="result"></p>
+
+                <!-- <a href="#" class="myButton">white</a> -->
             </div>
-
-            <p id="result"></p>
-
-            <a href="#" class="myButton">white</a>
 
 
         </aside>
