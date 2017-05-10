@@ -67,11 +67,11 @@ section {
 }
 
 .article {
-	flex: 1 35%;
+	flex        : 1 35%;
 	-webkit-flex: 1 35%;
 
-	/*background   : rgba(255, 187, 187, 0);*/
-	background-color: rgb(173, 190, 199);	
+	/*background-color: rgb(173, 190, 199);	*/
+	background-color: white;	
 	border-radius   : 3px;
 	border          : solid 1px #222;
 	
