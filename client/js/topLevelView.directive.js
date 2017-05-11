@@ -20,7 +20,7 @@ function LandingPageController($rootScope, $scope) {
 
   // Style.prototype.getWeight
 
-
+// setResidueColor
 
   vm                 = this;
   vm.updateLineWidth = updateLineWidth;
@@ -61,31 +61,43 @@ function LandingPageController($rootScope, $scope) {
         resindex      : true
     });
 
-    var width = 1;
+    var width = 10;
     setLineWidth(width);
 
-    vm.dna.render();
+    var options = {};
+    options.seqpanel  = true;
+    options.optspanel = true;
+    options.resindex  = true;
+    vm.dna.render(options);
   }
 
   function updateLineWidth() {
     setLineWidth(vm.lineWidth);
-    renderChart();
+    var options       = {};
+    options.seqpanel  = false;
+    options.optspanel = false;
+    options.resindex  = false;
+
+    vm.dna.render(options);
   }
 
   function setLineWidth(width) {
     console.log('setting width: ', width, 'px');
 
-    vm.dna.optns.struct.attributes.links.models[0].attributes.color = "purple";
     vm.dna.optns.struct.attributes.links.models.map((item)=> {
-        item.attributes.color  = "purple";
         item.attributes.weight = width;
     });
 
+    vm.dna.optns.struct.attributes.residues.models.map((item)=> {
+        item.attributes.color = "purple";
+    });
+
+
   }
 
-  function renderChart() {
-    vm.dna.struct.set("renderSwitch", !vm.dna.struct.get("renderSwitch"));    
-  }
+  // function renderChart() {
+  //   vm.dna.struct.set("renderSwitch", !vm.dna.struct.get("renderSwitch"));    
+  // }
 
 }
 

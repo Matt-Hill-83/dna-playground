@@ -11656,55 +11656,58 @@ this.cytoscape = cytoscape;
     var data = function( prefix ){ return '^' + prefix + '\\s*\\(\\s*([\\w\\.]+)\\s*\\)$'; };
     var mapData = function( prefix ){ return '^' + prefix + '\\s*\\(([\\w\\.]+)\\s*\\,\\s*(' + number + ')\\s*\\,\\s*(' + number + ')\\s*,\\s*(' + number + '|\\w+|' + rgba + '|' + hsla + '|' + hex3 + '|' + hex6 + ')\\s*\\,\\s*(' + number + '|\\w+|' + rgba + '|' + hsla + '|' + hex3 + '|' + hex6 + ')\\)$'; };
 
+    // ////////////////////////////// zzz - font //////////////////////////////////////////////////
+
+
     // each visual style property has a type and needs to be validated according to it
     $$.style.types = {
-      time: { number: true, min: 0, units: 's|ms', implicitUnits: 'ms' },
-      percent: { number: true, min: 0, max: 100, units: '%' },
-      zeroOneNumber: { number: true, min: 0, max: 1, unitless: true },
-      nOneOneNumber: { number: true, min: -1, max: 1, unitless: true },
-      nonNegativeInt: { number: true, min: 0, integer: true, unitless: true },
-      position: { enums: ['parent', 'origin'] },
-      autoSize: { number: true, min: 0, enums: ['auto'] },
-      number: { number: true },
-      size: { number: true, min: 0 },
-      bgSize: { number: true, min: 0, allowPercent: true },
-      bgWH: { number: true, min: 0, allowPercent: true, enums: ['auto'] },
-      bgPos: { number: true, allowPercent: true },
-      bgRepeat: { enums: ['repeat', 'repeat-x', 'repeat-y', 'no-repeat'] },
-      bgFit: { enums: ['none', 'contain', 'cover'] },
-      bgClip: { enums: ['none', 'node'] },
-      color: { color: true },
-      lineStyle: { enums: ['solid', 'dotted', 'dashed'] },
-      borderStyle: { enums: ['solid', 'dotted', 'dashed', 'double'] },
-      curveStyle: { enums: ['bezier', 'unbundled-bezier', 'haystack'] },
-      fontFamily: { regex: '^([\\w- \\"]+(?:\\s*,\\s*[\\w- \\"]+)*)$' },
-      fontVariant: { enums: ['small-caps', 'normal'] },
-      fontStyle: { enums: ['italic', 'normal', 'oblique'] },
-      fontWeight: { enums: ['normal', 'bold', 'bolder', 'lighter', '100', '200', '300', '400', '500', '600', '800', '900', 100, 200, 300, 400, 500, 600, 700, 800, 900] },
-      textDecoration: { enums: ['none', 'underline', 'overline', 'line-through'] },
-      textTransform: { enums: ['none', 'uppercase', 'lowercase'] },
-      textWrap: { enums: ['none', 'wrap'] },
-      textBackgroundShape: { enums: ['rectangle', 'roundrectangle']},
-      nodeShape: { enums: ['rectangle', 'roundrectangle', 'ellipse', 'triangle', 'square', 'pentagon', 'hexagon', 'heptagon', 'octagon', 'star', 'diamond', 'vee', 'rhomboid'] },
+      time                 : { number: true, min: 0, units: 's|ms', implicitUnits: 'ms' },
+      percent              : { number: true, min: 0, max: 100, units: '%' },
+      zeroOneNumber        : { number: true, min: 0, max: 1, unitless: true },
+      nOneOneNumber        : { number: true, min: -1, max: 1, unitless: true },
+      nonNegativeInt       : { number: true, min: 0, integer: true, unitless: true },
+      position             : { enums: ['parent', 'origin'] },
+      autoSize             : { number: true, min: 0, enums: ['auto'] },
+      number               : { number: true },
+      size                 : { number: true, min: 0 },
+      bgSize               : { number: true, min: 0, allowPercent: true },
+      bgWH                 : { number: true, min: 0, allowPercent: true, enums: ['auto'] },
+      bgPos                : { number: true, allowPercent: true },
+      bgRepeat             : { enums: ['repeat', 'repeat-x', 'repeat-y', 'no-repeat'] },
+      bgFit                : { enums: ['none', 'contain', 'cover'] },
+      bgClip               : { enums: ['none', 'node'] },
+      color                : { color: true },
+      lineStyle            : { enums: ['solid', 'dotted', 'dashed'] },
+      borderStyle          : { enums: ['solid', 'dotted', 'dashed', 'double'] },
+      curveStyle           : { enums: ['bezier', 'unbundled-bezier', 'haystack'] },
+      fontFamily           : { regex: '^([\\w- \\"]+(?:\\s*,\\s*[\\w- \\"]+)*)$' },
+      fontVariant          : { enums: ['small-caps', 'normal'] },
+      fontStyle            : { enums: ['italic', 'normal', 'oblique'] },
+      fontWeight           : { enums: ['normal', 'bold', 'bolder', 'lighter', '100', '200', '300', '400', '500', '600', '800', '900', 100, 200, 300, 400, 500, 600, 700, 800, 900] },
+      textDecoration       : { enums: ['none', 'underline', 'overline', 'line-through'] },
+      textTransform        : { enums: ['none', 'uppercase', 'lowercase'] },
+      textWrap             : { enums: ['none', 'wrap'] },
+      textBackgroundShape  : { enums: ['rectangle', 'roundrectangle']},
+      nodeShape            : { enums: ['rectangle', 'roundrectangle', 'ellipse', 'triangle', 'square', 'pentagon', 'hexagon', 'heptagon', 'octagon', 'star', 'diamond', 'vee', 'rhomboid'] },
       compoundIncludeLabels: { enums: ['include', 'exclude'] },
-      arrowShape: { enums: ['tee', 'triangle', 'triangle-tee', 'triangle-backcurve', 'half-triangle-overshot', 'square', 'circle', 'diamond', 'none'] },
-      arrowFill: { enums: ['filled', 'hollow'] },
-      display: { enums: ['element', 'none'] },
-      visibility: { enums: ['hidden', 'visible'] },
-      valign: { enums: ['top', 'center', 'bottom'] },
-      halign: { enums: ['left', 'center', 'right'] },
-      text: { string: true },
-      data: { mapping: true, regex: data('data') },
-      layoutData: { mapping: true, regex: data('layoutData') },
-      scratch: { mapping: true, regex: data('scratch') },
-      mapData: { mapping: true, regex: mapData('mapData') },
-      mapLayoutData: { mapping: true, regex: mapData('mapLayoutData') },
-      mapScratch: { mapping: true, regex: mapData('mapScratch') },
-      fn: { mapping: true, fn: true },
-      url: { regex: '^url\\s*\\(\\s*([^\\s]+)\\s*\\s*\\)|none|(.+)$' },
-      propList: { propList: true },
-      angle: { number: true, units: 'deg|rad' },
-      textRotation: { enums: ['none', 'autorotate'] }
+      arrowShape           : { enums: ['tee', 'triangle', 'triangle-tee', 'triangle-backcurve', 'half-triangle-overshot', 'square', 'circle', 'diamond', 'none'] },
+      arrowFill            : { enums: ['filled', 'hollow'] },
+      display              : { enums: ['element', 'none'] },
+      visibility           : { enums: ['hidden', 'visible'] },
+      valign               : { enums: ['top', 'center', 'bottom'] },
+      halign               : { enums: ['left', 'center', 'right'] },
+      text                 : { string: true },
+      data                 : { mapping: true, regex: data('data') },
+      layoutData           : { mapping: true, regex: data('layoutData') },
+      scratch              : { mapping: true, regex: data('scratch') },
+      mapData              : { mapping: true, regex: mapData('mapData') },
+      mapLayoutData        : { mapping: true, regex: mapData('mapLayoutData') },
+      mapScratch           : { mapping: true, regex: mapData('mapScratch') },
+      fn                   : { mapping: true, fn: true },
+      url                  : { regex: '^url\\s*\\(\\s*([^\\s]+)\\s*\\s*\\)|none|(.+)$' },
+      propList             : { propList: true },
+      angle                : { number: true, units: 'deg|rad' },
+      textRotation         : { enums: ['none', 'autorotate'] }
     };
 
     // define visual style properties
@@ -11864,14 +11867,19 @@ this.cytoscape = cytoscape;
     // instead of the developer's values so let's just make it explicit for the dev for now
     //
     // delaying the read of these val's is not an opt'n: that would delay init'l load time
-    var fontFamily = 'Helvetica' || this.containerPropertyAsString('font-family') || 'sans-serif';
-    var fontStyle = 'normal' || this.containerPropertyAsString('font-style') || 'normal';
-    // var fontVariant = 'normal' || this.containerPropertyAsString('font-variant') || 'normal';
-    var fontWeight = 'normal' || this.containerPropertyAsString('font-weight') || 'normal';
-    var color = '#000' || this.containerPropertyAsString('color') || '#000';
+    
+    /////////////////////// zzz - font size //////////////////////////////////////////
+
+    var fontFamily    = 'Helvetica' || this.containerPropertyAsString('font-family') || 'sans-serif';
+    // var fontFamily    = 'Arial' || this.containerPropertyAsString('font-family') || 'sans-serif';
+    var fontStyle     = 'normal' || this.containerPropertyAsString('font-style') || 'normal';
+    var fontWeight    = 'normal' || this.containerPropertyAsString('font-weight') || 'normal';
+    var color         = '#000' || this.containerPropertyAsString('color') || '#000';
+    // var color         = '#FFF' || this.containerPropertyAsString('color') || '#000';
     var textTransform = 'none' || this.containerPropertyAsString('text-transform') || 'none';
-    var fontSize = 16 || this.containerPropertyAsString('font-size') || 16;
-    var textMaxWidth = 9999 || this.containerPropertyAsString('text-max-width') || 9999;
+    var fontSize      = 16 || this.containerPropertyAsString('font-size') || 16;
+    // var fontSize      = 56 || this.containerPropertyAsString('font-size') || 16;
+    var textMaxWidth  = 9999 || this.containerPropertyAsString('text-max-width') || 9999;
 
     // fill the style with the default stylesheet
     this
@@ -50679,7 +50687,8 @@ var Backbone = require("backbone");
 
 var Link = Backbone.Model.extend({
     defaults: {
-        group: "edges"
+        group: "edges",
+        test:  "test",
     },
     initialize: function(data){
         this.set("id", data.id);
@@ -50688,6 +50697,7 @@ var Link = Backbone.Model.extend({
         this.set("label", data.label);
         this.set("weight", data.weight);
         this.set("color", data.color);
+        this.set("test", 'test');
     }
 })
 
@@ -50695,8 +50705,11 @@ module.exports = Link;
 
 },{"backbone":1}],99:[function(require,module,exports){
 var Backbone = require("backbone");
-var Link = require("./link");
-var pdbr = require("../utils/parsedbr");
+var Link     = require("./link");
+var pdbr     = require("../utils/parsedbr");
+var _        = require("underscore");
+
+////////////////////// zzz - link collection //////////////////////////////////
 
 var LinkCol = Backbone.Collection.extend({
     model: Link,
@@ -50704,6 +50717,31 @@ var LinkCol = Backbone.Collection.extend({
         this.style = stl;
         this.residues = residues;
     },
+    setLinkColor: function(color){
+      console.log('setting link color');
+
+
+    console.log('|++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++|');
+    console.log('this: ');
+    console.log(this);
+    console.log('|------------------------------------------------------------------------------------------------|')
+    
+    
+    this.models.map(item=> {
+      console.log(item);
+      
+        item.attributes.weight = 1;
+    });      
+
+        _.each(this.where({test: "test"}),
+            function(el){
+              // console.log(el);
+              
+              el.set("color", "purple");
+            });
+    },
+
+
     newBond: function(src, target){
         var res1 = this.residues.at(parseInt(src));
         var res2 = this.residues.at(parseInt(target));
@@ -50723,7 +50761,7 @@ var LinkCol = Backbone.Collection.extend({
 
 module.exports = LinkCol;
 
-},{"../utils/parsedbr":105,"./link":98,"backbone":1}],100:[function(require,module,exports){
+},{"../utils/parsedbr":105,"./link":98,"backbone":1,"underscore":88}],100:[function(require,module,exports){
 var Backbone = require("backbone");
 
 var Anno = Backbone.Model.extend({
@@ -50782,6 +50820,8 @@ var Residue = Backbone.Model.extend({
 
 module.exports = Residue;
 
+/////////////////// zzz - change color ///////////////////////////////
+
 },{"backbone":1}],102:[function(require,module,exports){
 var Backbone = require("backbone");
 var Residue = require("./residue");
@@ -50789,7 +50829,10 @@ var _ = require("underscore");
 
 var ResidueCol = Backbone.Collection.extend({
     model: Residue,
+
     setResidueColor: function(group, color){
+      console.log('setting color');
+
         _.each(this.where({name: group}),
             function(el){ el.set("color", color); });
     },
@@ -50895,6 +50938,9 @@ var Structure = Backbone.Model.extend({
             }));
         }
         this.set("links", linkCol);
+
+
+        //   zzz - reconstruct links   //////////////////////////
         this.listenTo(this.get("links"), "update", this.reconstruct);
     },
 
@@ -53445,9 +53491,9 @@ Style.prototype.getCytoscapeStyle = function(){
     var css = cytoscape.stylesheet()
             .selector("node")
             .css({
-                "content": "data(label)",
-                "text-valign": "center",
-                "color": "white",
+                "content"           : "data(label)",
+                "text-valign"       : "center",
+                "color"             : "white",
                 "text-outline-width": 2,
                 "text-outline-color": "#778899"
             })
@@ -53692,21 +53738,21 @@ var AnnoView = Backbone.View.extend({
             + "</button></div>";
     },
     defineStyle: function(){
-        var st = this.el.style;
-        st.display = "block";
-        st.position = "absolute";
-        st.left = "1%";
-        st.width = "435px";
-        st.height = "170px";
-        st.padding = "10px";
-        st.paddingRight = "55px";
-        st.border = "1px solid black";
-        st.borderRadius = "1px";
+        var st             = this.el.style;
+        st.display         = "block";
+        st.position        = "absolute";
+        st.left            = "1%";
+        st.width           = "435px";
+        st.height          = "170px";
+        st.padding         = "10px";
+        st.paddingRight    = "55px";
+        st.border          = "1px solid black";
+        st.borderRadius    = "1px";
         st.backgroundColor = "#F6F6F6";
-        st.overflow = "auto";
-        st.fontWeight = "bold";
-        st.textAlign = "center";
-        st.zIndex = 1002;
+        st.overflow        = "auto";
+        st.fontWeight      = "bold";
+        st.textAlign       = "center";
+        st.zIndex          = 1002;
     },
     selectWc1: function(){
         this.anno.set("base1", "wc");
@@ -53796,18 +53842,33 @@ var Optspanel = Backbone.View.extend({
         this.el.innerHTML += '<div class="col-md-9 colsel"><p>Color of selected nucleic acids</p></div>';
         this.el.innerHTML += '<div class="col-md-3 colsel"><input type="text" id="selcolor"></div>';
         this.el.innerHTML += '<div class="cntrl"><input class="button" id="center" value="Reset viewport" readonly="readonly">'
-    	               + '<input class="button" id="export" value="Export as PNG" readonly="readonly"></div>';
+                     + '<input class="button" id="export" value="Export as PNG" readonly="readonly"></div>';
+        this.el.innerHTML += '<a href="www.google.com" ng-click="dnaPlayground.updateLineWidth()"  class="myButton">refresh</a>';
 
         //init colors
         this.initColors(this);
     },
+
+
+    //                     zzz - change colors
     initColors: function(self){
         var res = self.struct.get("residues");
+        var links = self.struct.get("links");
+
+        console.log('|++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++|');
+        console.log('res: ');
+        console.log(links);
+        console.log('|------------------------------------------------------------------------------------------------|')
+        
+        
         var cy = self;
         $("#acolor").spectrum({
             color: "#64F73F",
             change: function(color){
                 res.setResidueColor("A", color.toHexString());
+
+                // MH: new stuff
+                links.setLinkColor(color.toHexString());
                 cy.vis.cy.nodes("[label='A']").css("background-color", color.toHexString());
             }
         });
@@ -54254,7 +54315,6 @@ var Drawrnajs = Backbone.View.extend({
       console.log('|++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++|');
       console.log('opts: ');
       console.log(opts);
-      // console.log(opts.struct.links.models);
       console.log('|------------------------------------------------------------------------------------------------|')
       
       
@@ -54297,26 +54357,18 @@ var Drawrnajs = Backbone.View.extend({
 
 
     },
-    render: function(){
-      debugger;
-      console.log('rendering structure');
+    render: function(options){
+      if(this.seq && options.seqpanel){
+          console.log('rendering seq');
+          this.seq.render();
+      }
+      if(this.optns && options.optspanel){
+          console.log('rendering optns');
+          this.optns.render();
+      }
       
-        if(this.seq){
-            console.log('rendering seq');
-            this.seq.render();
-        }
-        if(this.optns){
-            console.log('rendering optns');
-
-            console.log('|++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++|');
-            console.log('this.optns: ');
-            console.log(this.optns);
-            console.log('|------------------------------------------------------------------------------------------------|')
-            
-            
-            this.optns.render();
-        }
-        this.vis.render();
+      console.log('rendering structure');
+      this.vis.render();
     }
 });
 
