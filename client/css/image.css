@@ -3,5 +3,7 @@ img.GeneratedImage {
 }
 
 .logo-container {
-  height: 90px;
+	height    : 90px;
+	margin    : -10px 0px;
+	background: white;
 }
