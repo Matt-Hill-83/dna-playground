@@ -5,8 +5,10 @@
 }
 
 body {
-	font-size  : 1.0em;
-	font-family: Trebuchet MS, sans-serif;
+	font-size       : 1.0em;
+	font-family     : Trebuchet MS, sans-serif;
+	background-color: #e1e1e1;
+	color           : #626671;	
 }
 
 .flex-container {
@@ -19,7 +21,7 @@ body {
 	box-sizing: border-box;
 	display   : flex;
 	flex-flow : row;
-	background: white;
+	/*background: white;*/
 	margin    : 4px;
 	padding   : 5px;
 }
