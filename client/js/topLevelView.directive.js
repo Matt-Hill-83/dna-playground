@@ -29,14 +29,13 @@ function LandingPageController($rootScope, $scope) {
     value: 2
   };
 
-
   var sequenceDefDiv       = document.getElementById('matt_1');
   var dnaGraphDiv          = document.getElementById('dna-graph');
   var dnaGraphContainerDiv = document.getElementById('dna-graph-container');
   var optionsPanelDiv      = document.getElementById('color-controls');
 
   // Set outer div height after page is rendered.
-  var dnaGraphHeight             = "900px";
+  var dnaGraphHeight                = "900px";
   dnaGraphContainerDiv.style.height = dnaGraphHeight;
   dnaGraphDiv.style.height          = dnaGraphHeight;
 
@@ -47,15 +46,15 @@ function LandingPageController($rootScope, $scope) {
   function init(input) {
     var Dna = require("drawrnajs");
     vm.dna = new Dna({
-        sequenceDefDiv     : sequenceDefDiv,
-        dnaGraphDiv : dnaGraphDiv,
-        optsPanelDiv: optionsPanelDiv,
-        seq         : input[0],
-        dotbr       : input[1],
-        layout      : "naview",
-        seqpanel    : true,
-        optspanel   : true,
-        resindex    : true
+        sequenceDefDiv: sequenceDefDiv,
+        dnaGraphDiv   : dnaGraphDiv,
+        optsPanelDiv  : optionsPanelDiv,
+        seq           : input[0],
+        dotbr         : input[1],
+        layout        : "naview",
+        seqpanel      : true,
+        optspanel     : true,
+        resindex      : true
     });
 
     var width = 1;
@@ -71,8 +70,6 @@ function LandingPageController($rootScope, $scope) {
 
   function setLineWidth(width) {
     console.log('setting width: ', width, 'px');
-    
-    // var dnaGraphDiv = document.getElementById('dna-graph');
 
     vm.dna.optns.struct.attributes.links.models[0].attributes.color = "purple";
     vm.dna.optns.struct.attributes.links.models.map((item)=> {
@@ -86,8 +83,6 @@ function LandingPageController($rootScope, $scope) {
     console.log('refreshing');
     vm.dna.struct.set("renderSwitch", !vm.dna.struct.get("renderSwitch"));    
   }
-  
-
 
 }
 
