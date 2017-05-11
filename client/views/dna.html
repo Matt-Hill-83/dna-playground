@@ -48,9 +48,13 @@
                     max       ={{dnaPlayground.lineSizePicker.max}}
                     value     ={{dnaPlayground.lineSizePicker.value}}/>
                 
-                <span class="slider-label-left">{{dnaPlayground.lineSizePicker.min}}px</span>
-                <span class="custom-control-label">{{"       Line Width"}}</span>
-                <span class="slider-label-right">{{dnaPlayground.lineSizePicker.max}}px</span>
+                <div>
+                    <span class="slider-label-left">{{dnaPlayground.lineSizePicker.min}}px</span>
+                    <span class="slider-label-right">{{dnaPlayground.lineSizePicker.max}}px</span>
+                </div>
+                <div class="custom-control-label-container">
+                    <span class="custom-control-label">{{"       Line Width"}}</span>
+                </div>
 
                 <!-- <a href="#" ng-click="dnaPlayground.updateLineWidth()"  class="myButton">refresh</a> -->
             </div>
@@ -65,10 +69,14 @@
                     min       ={{dnaPlayground.baseSizePicker.min}}
                     max       ={{dnaPlayground.baseSizePicker.max}}
                     value     ={{dnaPlayground.baseSizePicker.value}}/>
-                
-                <span class="slider-label-left">{{dnaPlayground.baseSizePicker.min}}px</span>
-                <span class="custom-control-label">{{"       Base Size"}}</span>
-                <span class="slider-label-right">{{dnaPlayground.baseSizePicker.max}}px</span>
+
+                <div>
+                    <span class="slider-label-left">{{dnaPlayground.baseSizePicker.min}}px</span>
+                    <span class="slider-label-right">{{dnaPlayground.baseSizePicker.max}}px</span>
+                </div>                
+                <div>
+                    <span class="custom-control-label">{{"       Base Size"}}</span>
+                </div>
 
                 <!-- <a href="#" ng-click="dnaPlayground.updateLineWidth()"  class="myButton">refresh</a> -->
             </div>
