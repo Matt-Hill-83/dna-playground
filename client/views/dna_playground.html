@@ -1,14 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>dna playground</title>
+    <title>dna playground</title>
+    <meta charset="UTF-8">
 
-	<!-- Get styles -->
+    <!-- Get remote styles -->
+        <!-- drawrnajs -->
+        <link type="text/css" rel="stylesheet" href="https://cdn.rawgit.com/bene200/drawrnajs/master/style/bootstrap.css">
+        <link type="text/css" rel="stylesheet" href="https://cdn.rawgit.com/bene200/drawrnajs/master/style/spectrum.css">
+        <link type="text/css" rel="stylesheet" href="https://cdn.rawgit.com/bene200/drawrnajs/master/style/style.css">
+
+        <!-- font awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <!-- Get local styles -->
     <link rel="stylesheet" media="screen" href="/css/styles.css">
     <link rel="stylesheet" media="screen" href="/css/custom-controls.css">
 
-    <!-- font awesome -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- ///////////////////////////////// js files ///////////////////////////////////// -->
+
+    <!-- remote libraries -->
 
     <!-- get jQuery -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
@@ -19,27 +30,20 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
 
 
-    <!-- ///////////////////////////////// js files ///////////////////////////////////// -->
+    <!-- angularjs files -->
 
     <!-- controllers -->
     <script src="js/topLevel.controller.js"></script>
     
-    <!-- services -->
-
     <!-- directives -->
     <script src="js/topLevelView.directive.js"></script>
 
-    <meta charset="UTF-8">
-    <link type="text/css" rel="stylesheet" href="https://cdn.rawgit.com/bene200/drawrnajs/master/style/bootstrap.css">
-    <link type="text/css" rel="stylesheet" href="https://cdn.rawgit.com/bene200/drawrnajs/master/style/spectrum.css">
-    <link type="text/css" rel="stylesheet" href="https://cdn.rawgit.com/bene200/drawrnajs/master/style/style.css">
-
+    <!-- packages -->
     <script src="js/packages/drawrna.js"></script>
 
 </head>
 
 <body ng-app="app">
   <landing-page> </landing-page>
-
 </body>
 </html>
