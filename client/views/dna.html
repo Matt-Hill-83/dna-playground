@@ -32,20 +32,15 @@
                     <input
                         id        ="line-width"
                         ng-model  ="dnaPlayground.lineWidth"
-                        ng-change ="dnaPlayground.setLineWidth({{dnaPlayground.lineWidth}})"
+                        ng-change ="dnaPlayground.updateLineWidth({{dnaPlayground.lineWidth}})"
                         type      ="range"
                         min       ={{dnaPlayground.lineSizePicker.min}}
                         max       ={{dnaPlayground.lineSizePicker.max}}
                         value     ={{dnaPlayground.lineSizePicker.value}}/>
                     {{dnaPlayground.lineSizePicker.max}}px
-                    
-                    <!-- <h2>Base Size</h2> -->
-                    <!-- $51<input id="price" type="range" min="51" max="360" value="" />$360 -->
                 </div>
 
-                <p id="result"></p>
-
-                <a href="#" ng-click="dnaPlayground.myButton()"  class="myButton">refresh</a>
+                <a href="#" ng-click="dnaPlayground.updateLineWidth()"  class="myButton">refresh</a>
             </div>
 
             <br><br>

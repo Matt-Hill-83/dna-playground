@@ -16,16 +16,15 @@ function LandingPageController($rootScope, $scope) {
       "..(((((...(((((...(((((...(((((.....)))))...))))).....(((((...(((((.....)))))...))))).....)))))...))))).."
   ];
 
-  vm = this;
-  vm.setLineWidth = setLineWidth;
-  vm.refreshChart = refreshChart;
-  vm.myButton     = myButton;
-  vm.lineWidth    = 3;
+  vm                 = this;
+  vm.setLineWidth    = setLineWidth;
+  vm.refreshChart    = refreshChart;
+  vm.updateLineWidth = updateLineWidth;
+  vm.lineWidth       = 3;
   vm.dna;
 
   vm.lineSizePicker = {
-    id   : "price",
-    min  : 0,
+    min  : 1,
     max  : 10,
     value: 2
   };
@@ -42,10 +41,6 @@ function LandingPageController($rootScope, $scope) {
   dnaGraph.style.height          = dnaGraphHeight;
 
   init(input);
-
-  // var width = 1;
-  // setLineWidth(width);
-
 
   ///////////////
 
@@ -69,14 +64,13 @@ function LandingPageController($rootScope, $scope) {
     vm.dna.render();
   }
 
-  function myButton () {
-    var width = 10;
+  function updateLineWidth() {
+    var width = vm.lineWidth;
     setLineWidth(width);
     refreshChart();
   }
 
   function setLineWidth(width) {
-    debugger;
     console.log('setting width');
     console.log(width);
     
@@ -92,7 +86,6 @@ function LandingPageController($rootScope, $scope) {
 
   function refreshChart() {
     console.log('refreshing');
-    debugger;
     vm.dna.struct.set("renderSwitch", !vm.dna.struct.get("renderSwitch"));    
   }
   
