@@ -50861,10 +50861,10 @@ var Structure = Backbone.Model.extend({
     defineStructure: function(){
       debugger;
       console.log('define');
-        var seq = this.get("seq"),
-            dotbr = this.get("dotbr"),
-            layout = this.get("layout"),
-            style = this.get("style");
+        var seq    = this.get("seq");
+        var dotbr  = this.get("dotbr");
+        var layout = this.get("layout");
+        var style  = this.get("style");
 
         //set residues
         var resCol = new ResidueCol();
@@ -53384,9 +53384,14 @@ Style.prototype.getColor = function(element){
 		else if (element === "C"){
 			col = $("#ccolor").spectrum('get').toHexString();
 		}
-		else if (element === "U"){
+    else if (element === "U"){
+      col = $("#ucolor").spectrum('get').toHexString();
+    }
+    // MH: add a color for thiamine
+		else if (element === "T"){
 			col = $("#ucolor").spectrum('get').toHexString();
 		}
+    
 		else if (element === "G"){
 			col = $("#gcolor").spectrum('get').toHexString();
 		}
@@ -53743,20 +53748,22 @@ var lassotool = require("../utils/lasso")($);
 var _ = require("underscore");
 var tooltip = require("tooltip");
 
+// ///////////////////////////////////////// zzz - opts panel ////////////////////////////////////////////////////////
+
 var Optspanel = Backbone.View.extend({
     events: {
-        "click #export": "exportAsPNG",
-        "click #center": "center",
-        "click #lasso": "activateLasso",
+        "click #export"   : "exportAsPNG",
+        "click #center"   : "center",
+        "click #lasso"    : "activateLasso",
         "click #discovery": "activateDiscovery",
-        "click #newbond": "activateBondDrawing"
+        "click #newbond"  : "activateBondDrawing"
     },
     initialize: function(opts){
-        this.el = opts.el;
+        this.el           = opts.el;
         this.el.className += "container-fluid";
-        this.el.id = "opts";
-        this.struct = opts.struct;
-        this.vis = opts.vis;
+        this.el.id        = "opts";
+        this.struct       = opts.struct;
+        this.vis          = opts.vis;
 
         this.listenTo(this.vis, "rendered", this.checkMode)
     },
@@ -53774,17 +53781,17 @@ var Optspanel = Backbone.View.extend({
         this.el.innerHTML += '<div class="cntrl"><button class="icon" id="discovery" data-tooltip="Exploration mode" value="Discovery mode" readonly="readonly"><img class="mode" src="http://www.cipherpoint.com/wp-content/uploads/2014/07/search.png"></button>'
                         + '<button class="icon" id="lasso" value="Lasso mode"  data-tooltip="Selection mode" readonly="readonly"><img class="mode" src="https://d30y9cdsu7xlg0.cloudfront.net/png/21906-200.png"></button>'
                         + '<button class="icon" id="newbond" value="Bond drawing mode" data-tooltip="Editing mode" readonly="readonly"><img class="mode" src="http://vseo.vn/dao-tao-seo/uploads/tin-tuc/anchor-link.png"></button></div>';
-  		this.el.innerHTML += '<div class="col-md-3"><p class="res">A</p></div>';
-  		this.el.innerHTML += '<div class="col-md-3"><p class="res">C</p></div>';
-  		this.el.innerHTML += '<div class="col-md-3"><p class="res">G</p></div>';
-  		this.el.innerHTML += '<div class="col-md-3"><p class="res">U</p></div>';
+        this.el.innerHTML += '<div class="col-md-3"><p class="res">A</p></div>';
+        this.el.innerHTML += '<div class="col-md-3"><p class="res">C</p></div>';
+        this.el.innerHTML += '<div class="col-md-3"><p class="res">G</p></div>';
+        this.el.innerHTML += '<div class="col-md-3"><p class="res">T</p></div>';
         this.el.innerHTML += '<div class="col-md-3"><input type="text" id="acolor"></div>';
-  		this.el.innerHTML += '<div class="col-md-3"><input type="text" id="ccolor"></div>';
-  		this.el.innerHTML += '<div class="col-md-3"><input type="text" id="gcolor"></div>';
-  		this.el.innerHTML += '<div class="col-md-3"><input type="text" id="ucolor"></div>';
+        this.el.innerHTML += '<div class="col-md-3"><input type="text" id="ccolor"></div>';
+        this.el.innerHTML += '<div class="col-md-3"><input type="text" id="gcolor"></div>';
+        this.el.innerHTML += '<div class="col-md-3"><input type="text" id="ucolor"></div>';
         this.el.innerHTML += '<div class="col-md-9 colsel"><p>Color of selected nucleic acids</p></div>';
         this.el.innerHTML += '<div class="col-md-3 colsel"><input type="text" id="selcolor"></div>';
-    	this.el.innerHTML += '<div class="cntrl"><input class="button" id="center" value="Reset viewport" readonly="readonly">'
+        this.el.innerHTML += '<div class="cntrl"><input class="button" id="center" value="Reset viewport" readonly="readonly">'
     	               + '<input class="button" id="export" value="Export as PNG" readonly="readonly"></div>';
 
         //init colors
@@ -53817,8 +53824,8 @@ var Optspanel = Backbone.View.extend({
         $("#ucolor").spectrum({
             color: "#3C88EE",
             change: function(color){
-                res.setResidueColor("U", color.toHexString());
-                cy.vis.cy.nodes("[label='U']").css("background-color", color.toHexString());
+                res.setResidueColor("T", color.toHexString());
+                cy.vis.cy.nodes("[label='T']").css("background-color", color.toHexString());
             }
         });
         $("#selcolor").spectrum({

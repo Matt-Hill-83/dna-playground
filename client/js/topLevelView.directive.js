@@ -12,7 +12,7 @@ function landingPageController(Table, Constants) {
 
 function LandingPageController($rootScope, $scope) {
   var input = [
-      "CAGCACGACACUAGCAGUCAGUGUCAGACUGCAWACAGCACGACACUAGCAGUCAGUGUCAGACUGCAWACAGCACGACACUAGCAGUCAGUGUCAGACUGCAWA",
+      "CAGCACGACACTAGCAGTCAGTGTCAGACTGCAWACAGCACGACACTAGCAGTCAGTGTCAGACTGCAWACAGCACGACACTAGCAGTCAGTGTCAGACTGCAWA",
       "..(((((...(((((...(((((...(((((.....)))))...))))).....(((((...(((((.....)))))...))))).....)))))...))))).."
   ];
 
