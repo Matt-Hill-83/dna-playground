@@ -50868,29 +50868,30 @@ var Structure = Backbone.Model.extend({
 
         //set residues
         var resCol = new ResidueCol();
-        var graph = parseStruct.parseDbr(seq, dotbr);
+        var graph  = parseStruct.parseDbr(seq, dotbr);
         var coords = new Layout(layout, graph.nodes, graph.links).getCoords();
         for(var i=0; i<graph.nodes.length; i++){
             resCol.add(new Residue({
-                name: graph.nodes[i].name,
+                name : graph.nodes[i].name,
                 color: style.getColor(graph.nodes[i].name),
-                x: coords[i].x,
-                y: coords[i].y,
-                id: i.toString()
+                x    : coords[i].x,
+                y    : coords[i].y,
+                id   : i.toString()
             }));
         }
         this.set("residues", resCol);
 
         //set bonds
         var linkCol = new LinkCol(null, style, resCol);
+        debugger;
         for(var i=0; i<graph.links.length; i++){
             linkCol.add(new Link({
-                id: graph.links[i].source + "to" + graph.links[i].target,
+                id    : graph.links[i].source + "to" + graph.links[i].target,
                 source: graph.links[i].source.toString(),
                 target: graph.links[i].target.toString(),
-                label: graph.links[i].type,
+                label : graph.links[i].type,
                 weight: style.getWeight(graph.links[i].type),
-                color: style.getColor(graph.links[i].type)
+                color : style.getColor(graph.links[i].type)
             }));
         }
         this.set("links", linkCol);
@@ -50901,7 +50902,7 @@ var Structure = Backbone.Model.extend({
       console.log('toCytoscape');
       debugger;
       
-        //Create a JSON structure from a graph object built by the
+      //Create a JSON structure from a graph object built by the
       //transformDotBracket function
       //The JSON structure fits the requirements of CytoscapeJS
       var elements = [];

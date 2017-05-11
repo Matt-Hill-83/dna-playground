@@ -17,8 +17,6 @@ function LandingPageController($rootScope, $scope) {
   ];
 
   vm                 = this;
-  vm.setLineWidth    = setLineWidth;
-  vm.refreshChart    = refreshChart;
   vm.updateLineWidth = updateLineWidth;
   vm.lineWidth       = 3;
   vm.dna;
@@ -65,7 +63,7 @@ function LandingPageController($rootScope, $scope) {
 
   function updateLineWidth() {
     setLineWidth(vm.lineWidth);
-    refreshChart();
+    renderChart();
   }
 
   function setLineWidth(width) {
@@ -79,8 +77,7 @@ function LandingPageController($rootScope, $scope) {
 
   }
 
-  function refreshChart() {
-    console.log('refreshing');
+  function renderChart() {
     vm.dna.struct.set("renderSwitch", !vm.dna.struct.get("renderSwitch"));    
   }
 
