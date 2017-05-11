@@ -16,12 +16,6 @@ function LandingPageController($rootScope, $scope) {
       "..(((((...(((((...(((((...(((((.....)))))...))))).....(((((...(((((.....)))))...))))).....)))))...))))).."
   ];
 
-
-
-  // Style.prototype.getWeight
-
-// setResidueColor
-
   vm                 = this;
   vm.updateLineWidth = updateLineWidth;
   vm.lineWidth       = 3;
@@ -64,20 +58,22 @@ function LandingPageController($rootScope, $scope) {
     var width = 10;
     setLineWidth(width);
 
-    var options = {};
-    options.seqpanel  = true;
-    options.optspanel = true;
-    options.resindex  = true;
+    var options = {
+      seqpanel : true, 
+      optspanel: true,
+      resindex : true, 
+    };
+
     vm.dna.render(options);
   }
 
   function updateLineWidth() {
     setLineWidth(vm.lineWidth);
-    var options       = {};
-    options.seqpanel  = false;
-    options.optspanel = false;
-    options.resindex  = false;
-
+    var options = {
+      seqpanel : false, 
+      optspanel: false,
+      resindex : false, 
+    };
     vm.dna.render(options);
   }
 
@@ -87,12 +83,6 @@ function LandingPageController($rootScope, $scope) {
     vm.dna.optns.struct.attributes.links.models.map((item)=> {
         item.attributes.weight = width;
     });
-
-    vm.dna.optns.struct.attributes.residues.models.map((item)=> {
-        item.attributes.color = "purple";
-    });
-
-
   }
 
   // function renderChart() {

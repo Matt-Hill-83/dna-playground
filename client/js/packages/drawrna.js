@@ -54310,14 +54310,6 @@ var Optspanel = require("./views/optspanel");
 
 var Drawrnajs = Backbone.View.extend({
     initialize: function(opts){
-
-
-      console.log('|++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++|');
-      console.log('opts: ');
-      console.log(opts);
-      console.log('|------------------------------------------------------------------------------------------------|')
-      
-      
         var layout = opts.layout || "naview";
         this.struct = new Structure(opts.seq, opts.dotbr, layout);
         //views
@@ -54339,7 +54331,6 @@ var Drawrnajs = Backbone.View.extend({
             resindex: opts.resindex
         });
 
-
         if(opts.optspanel){
             // MH: Specify my own div to be replaced with the options panel.
             var optsEl = opts.optsPanelDiv;
@@ -54354,10 +54345,9 @@ var Drawrnajs = Backbone.View.extend({
             // MH: Change the div id so that it does not use the previous css associated with that id.
             this.optns.el.id = "";
         }
-
-
     },
     render: function(options){
+      // MH: If the component exists, but it has already been rendered, do not render it again.
       if(this.seq && options.seqpanel){
           console.log('rendering seq');
           this.seq.render();
