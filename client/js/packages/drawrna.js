@@ -53976,7 +53976,7 @@ var Seqpanel = Backbone.View.extend({
                         + '<input class="textbox" id="seqbox">'
                         + '<input class="textbox" id="dotbrbox"></div>';
         this.el.innerHTML += '<div class="col-md-1 seqin">'
-                        + '<input class="button" id="perform" value="Regenerate" readonly="readonly">'
+                        + '<input class="button" id="perform" value="Render" readonly="readonly">'
                         + '</div>';
         document.getElementById("seqbox").value = this.struct.get("seq");
         document.getElementById("dotbrbox").value = this.struct.get("dotbr");

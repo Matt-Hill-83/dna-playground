@@ -50,6 +50,11 @@
     float: right;
 }
 
+.custom-control-label {
+    font-size  : 1.0em;
+    font-weight: bold;
+}
+
 /* -------------------------------------- dna graph artifacts ---------------------------------*/
 
 .graph-title {

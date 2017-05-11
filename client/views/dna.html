@@ -38,20 +38,18 @@
             </div>
 
             <div class="side-bar-section">
-                <div style="margin-top: 1em">
-                    <!-- <h2>Custom Controls</h2> -->
-                    <h3>Line Width</h3>
-                    <span class="slider-label-left">{{dnaPlayground.lineSizePicker.min + " "}}px</span>
-                    <span class="slider-label-right">{{dnaPlayground.lineSizePicker.max  + " "}}px</span>
-                    <input
-                        id        ="line-width"
-                        ng-model  ="dnaPlayground.lineWidth"
-                        ng-change ="dnaPlayground.updateLineWidth({{dnaPlayground.lineWidth}})"
-                        type      ="range"
-                        min       ={{dnaPlayground.lineSizePicker.min}}
-                        max       ={{dnaPlayground.lineSizePicker.max}}
-                        value     ={{dnaPlayground.lineSizePicker.value}}/>
-                </div>
+                <input
+                    id        ="line-width"
+                    ng-model  ="dnaPlayground.lineWidth"
+                    ng-change ="dnaPlayground.updateLineWidth({{dnaPlayground.lineWidth}})"
+                    type      ="range"
+                    min       ={{dnaPlayground.lineSizePicker.min}}
+                    max       ={{dnaPlayground.lineSizePicker.max}}
+                    value     ={{dnaPlayground.lineSizePicker.value}}/>
+                
+                <span class="slider-label-left">{{dnaPlayground.lineSizePicker.min}}px</span>
+                <span class="custom-control-label">{{"       Line Width"}}</span>
+                <span class="slider-label-right">{{dnaPlayground.lineSizePicker.max}}px</span>
 
                 <!-- <a href="#" ng-click="dnaPlayground.updateLineWidth()"  class="myButton">refresh</a> -->
             </div>
