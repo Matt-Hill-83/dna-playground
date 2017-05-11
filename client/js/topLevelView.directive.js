@@ -16,6 +16,12 @@ function LandingPageController($rootScope, $scope) {
       "..(((((...(((((...(((((...(((((.....)))))...))))).....(((((...(((((.....)))))...))))).....)))))...))))).."
   ];
 
+
+
+  // Style.prototype.getWeight
+
+
+
   vm                 = this;
   vm.updateLineWidth = updateLineWidth;
   vm.lineWidth       = 3;

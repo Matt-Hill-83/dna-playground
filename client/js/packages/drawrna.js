@@ -53423,11 +53423,11 @@ Style.prototype.getWeight = function(type){
     //Get weight for a certain bond type
     var weight;
     if(type=== "hbond" || type === "violation"){
-        weight = 10;
-        // weight = 4;
+        // weight = 10;
+        weight = 4;
     } else {
-        // weight = 5;
-        weight = 10;
+        weight = 5;
+        // weight = 10;
     }
     return weight;
 }
