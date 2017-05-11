@@ -50687,8 +50687,7 @@ var Backbone = require("backbone");
 
 var Link = Backbone.Model.extend({
     defaults: {
-        group: "edges",
-        test:  "test",
+        group: "edges"
     },
     initialize: function(data){
         this.set("id", data.id);
@@ -50697,7 +50696,6 @@ var Link = Backbone.Model.extend({
         this.set("label", data.label);
         this.set("weight", data.weight);
         this.set("color", data.color);
-        this.set("test", 'test');
     }
 })
 
@@ -50707,7 +50705,6 @@ module.exports = Link;
 var Backbone = require("backbone");
 var Link     = require("./link");
 var pdbr     = require("../utils/parsedbr");
-var _        = require("underscore");
 
 ////////////////////// zzz - link collection //////////////////////////////////
 
@@ -50717,31 +50714,6 @@ var LinkCol = Backbone.Collection.extend({
         this.style = stl;
         this.residues = residues;
     },
-    setLinkColor: function(color){
-      console.log('setting link color');
-
-
-    console.log('|++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++|');
-    console.log('this: ');
-    console.log(this);
-    console.log('|------------------------------------------------------------------------------------------------|')
-    
-    
-    this.models.map(item=> {
-      console.log(item);
-      
-        item.attributes.weight = 1;
-    });      
-
-        _.each(this.where({test: "test"}),
-            function(el){
-              // console.log(el);
-              
-              el.set("color", "purple");
-            });
-    },
-
-
     newBond: function(src, target){
         var res1 = this.residues.at(parseInt(src));
         var res2 = this.residues.at(parseInt(target));
@@ -50902,7 +50874,6 @@ var Structure = Backbone.Model.extend({
         this.set("renderSwitch", !this.get("renderSwitch"));
     },
     defineStructure: function(){
-      debugger;
       console.log('define');
         var seq    = this.get("seq");
         var dotbr  = this.get("dotbr");
@@ -50926,7 +50897,6 @@ var Structure = Backbone.Model.extend({
 
         //set bonds
         var linkCol = new LinkCol(null, style, resCol);
-        debugger;
         for(var i=0; i<graph.links.length; i++){
             linkCol.add(new Link({
                 id    : graph.links[i].source + "to" + graph.links[i].target,
@@ -50946,7 +50916,6 @@ var Structure = Backbone.Model.extend({
 
     toCytoscape: function(){
       console.log('toCytoscape');
-      debugger;
       
       //Create a JSON structure from a graph object built by the
       //transformDotBracket function
@@ -53843,32 +53812,20 @@ var Optspanel = Backbone.View.extend({
         this.el.innerHTML += '<div class="col-md-3 colsel"><input type="text" id="selcolor"></div>';
         this.el.innerHTML += '<div class="cntrl"><input class="button" id="center" value="Reset viewport" readonly="readonly">'
                      + '<input class="button" id="export" value="Export as PNG" readonly="readonly"></div>';
-        this.el.innerHTML += '<a href="www.google.com" ng-click="dnaPlayground.updateLineWidth()"  class="myButton">refresh</a>';
 
         //init colors
         this.initColors(this);
     },
 
-
     //                     zzz - change colors
     initColors: function(self){
         var res = self.struct.get("residues");
-        var links = self.struct.get("links");
-
-        console.log('|++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++|');
-        console.log('res: ');
-        console.log(links);
-        console.log('|------------------------------------------------------------------------------------------------|')
-        
-        
         var cy = self;
+
         $("#acolor").spectrum({
             color: "#64F73F",
             change: function(color){
                 res.setResidueColor("A", color.toHexString());
-
-                // MH: new stuff
-                links.setLinkColor(color.toHexString());
                 cy.vis.cy.nodes("[label='A']").css("background-color", color.toHexString());
             }
         });
