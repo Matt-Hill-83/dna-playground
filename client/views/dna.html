@@ -37,6 +37,7 @@
                 <div id='color-controls'></div>
             </div>
 
+            <!-- Configure line width -->
             <div class="side-bar-section">
                 <input
                     id        ="line-width"
@@ -53,7 +54,23 @@
 
                 <!-- <a href="#" ng-click="dnaPlayground.updateLineWidth()"  class="myButton">refresh</a> -->
             </div>
-            <div class="side-bar-section last">
+
+            <!-- Configure base pair size -->
+            <div class="side-bar-section">
+                <input
+                    id        ="line-width"
+                    ng-model  ="dnaPlayground.baseSize"
+                    ng-change ="dnaPlayground.updateLineWidth({{dnaPlayground.baseSize}})"
+                    type      ="range"
+                    min       ={{dnaPlayground.baseSizePicker.min}}
+                    max       ={{dnaPlayground.baseSizePicker.max}}
+                    value     ={{dnaPlayground.baseSizePicker.value}}/>
+                
+                <span class="slider-label-left">{{dnaPlayground.baseSizePicker.min}}px</span>
+                <span class="custom-control-label">{{"       Base Size"}}</span>
+                <span class="slider-label-right">{{dnaPlayground.baseSizePicker.max}}px</span>
+
+                <!-- <a href="#" ng-click="dnaPlayground.updateLineWidth()"  class="myButton">refresh</a> -->
             </div>
 
         </right-side-bar>

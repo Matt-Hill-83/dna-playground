@@ -19,11 +19,18 @@ function LandingPageController($rootScope, $scope) {
   vm                 = this;
   vm.updateLineWidth = updateLineWidth;
   vm.lineWidth       = 3;
+  vm.lineSize        = 3;
   vm.dna;
 
   vm.lineSizePicker = {
     min  : 1,
     max  : 10,
+    value: 2
+  };
+
+  vm.baseSizePicker = {
+    min  : 1,
+    max  : 5,
     value: 2
   };
 
@@ -84,10 +91,5 @@ function LandingPageController($rootScope, $scope) {
         item.attributes.weight = width;
     });
   }
-
-  // function renderChart() {
-  //   vm.dna.struct.set("renderSwitch", !vm.dna.struct.get("renderSwitch"));    
-  // }
-
 }
 

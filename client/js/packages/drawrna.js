@@ -11871,14 +11871,11 @@ this.cytoscape = cytoscape;
     /////////////////////// zzz - font size //////////////////////////////////////////
 
     var fontFamily    = 'Helvetica' || this.containerPropertyAsString('font-family') || 'sans-serif';
-    // var fontFamily    = 'Arial' || this.containerPropertyAsString('font-family') || 'sans-serif';
     var fontStyle     = 'normal' || this.containerPropertyAsString('font-style') || 'normal';
     var fontWeight    = 'normal' || this.containerPropertyAsString('font-weight') || 'normal';
     var color         = '#000' || this.containerPropertyAsString('color') || '#000';
-    // var color         = '#FFF' || this.containerPropertyAsString('color') || '#000';
     var textTransform = 'none' || this.containerPropertyAsString('text-transform') || 'none';
     var fontSize      = 16 || this.containerPropertyAsString('font-size') || 16;
-    // var fontSize      = 56 || this.containerPropertyAsString('font-size') || 16;
     var textMaxWidth  = 9999 || this.containerPropertyAsString('text-max-width') || 9999;
 
     // fill the style with the default stylesheet
@@ -54306,15 +54303,12 @@ var Drawrnajs = Backbone.View.extend({
     render: function(options){
       // MH: If the component exists, but it has already been rendered, do not render it again.
       if(this.seq && options.seqpanel){
-          console.log('rendering seq');
           this.seq.render();
       }
       if(this.optns && options.optspanel){
-          console.log('rendering optns');
           this.optns.render();
       }
       
-      console.log('rendering structure');
       this.vis.render();
     }
 });
