@@ -19,7 +19,7 @@ function LandingPageController($rootScope, $scope) {
   vm                 = this;
   vm.updateLineWidth = updateLineWidth;
   vm.lineWidth       = 3;
-  vm.lineSize        = 3;
+  vm.baseSize        = 2;
   vm.dna;
 
   vm.lineSizePicker = {

@@ -53,10 +53,8 @@
                     <span class="slider-label-right">{{dnaPlayground.lineSizePicker.max}}px</span>
                 </div>
                 <div class="custom-control-label-container">
-                    <span class="custom-control-label">{{"       Line Width"}}</span>
+                    <span class="custom-control-label">{{"Line Width"}}</span>
                 </div>
-
-                <!-- <a href="#" ng-click="dnaPlayground.updateLineWidth()"  class="myButton">refresh</a> -->
             </div>
 
             <!-- Configure base pair size -->
@@ -64,7 +62,7 @@
                 <input
                     id        ="line-width"
                     ng-model  ="dnaPlayground.baseSize"
-                    ng-change ="dnaPlayground.updateLineWidth({{dnaPlayground.baseSize}})"
+                    xxx-ng-change ="dnaPlayground.updateBaseWidth({{dnaPlayground.baseSize}})"
                     type      ="range"
                     min       ={{dnaPlayground.baseSizePicker.min}}
                     max       ={{dnaPlayground.baseSizePicker.max}}
@@ -75,7 +73,7 @@
                     <span class="slider-label-right">{{dnaPlayground.baseSizePicker.max}}px</span>
                 </div>                
                 <div>
-                    <span class="custom-control-label">{{"       Base Size"}}</span>
+                    <span class="custom-control-label">{{"Base Size"}}</span>
                 </div>
 
                 <!-- <a href="#" ng-click="dnaPlayground.updateLineWidth()"  class="myButton">refresh</a> -->
