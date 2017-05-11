@@ -5,7 +5,7 @@
 }
 
 body {
-	font-size  : 100%;
+	font-size  : 1.0em;
 	font-family: Trebuchet MS, sans-serif;
 }
 
@@ -32,7 +32,7 @@ section {
 	height    : 1200px;
 }
 
-.article {
+.sub-section-1 {
 	background-color: #f1f5f8;	
 	border-radius   : 3px;
 	border          : solid 1px #222;
@@ -40,23 +40,23 @@ section {
 	padding         : 5px;
 }
 
-aside {
+right-side-bar {
 	flex         : 0 0 240px;
 	display      : flex;
 	flex-flow    : column;   
-	background   : #f1f5f8;
+	background   : rgba(0, 0, 0, 0);
 	border-radius: 3px;
 	border       : solid 1px #222;	
-	margin       : 4px;
-	padding      : 5px;
+	margin       : 0px;
+	padding      : 0px;
 }
 
-.box {
+.side-bar-section {
 	flex         : 1;
-	background   : #bdf;
+	background   : #f1f5f8;
 	border-radius: 3px;
 	border       : solid 1px #222;
-	margin       : 4px;
+	margin       : 0px;
 	padding      : 5px;
 }
 

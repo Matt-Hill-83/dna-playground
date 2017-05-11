@@ -1,6 +1,6 @@
 <div class="flex-container">
     <div class="bounding-container">
-        <div class = "article">
+        <div class = "sub-section-1">
             Plesiosaur mitochondrial fragment #ALH84001
         </div>
     </div>
@@ -8,27 +8,30 @@
     <div class="bounding-container">
         <section>
             <!-- Graph of DNA -->
-            <div class = "article" id="dna-graph-container">
+            <div class = "sub-section-1" id="dna-graph-container">
                 <div id='dna-graph'></div>
+                <span class="graph-title">Plesiosaur mitochondrial fragment #ALH84001</span>
             </div>
             
             <!-- Sequence and DBN definition-->
-            <div class = "article">
+            <div class = "sub-section-1">
                 <div id='matt_1'></div>
             </div>
             
         </section>
 
-        <aside>
-            <div class="box">
-                <h2>Node Manipulation</h2>
+        <right-side-bar>
+            <div class="side-bar-section">
+                <h2>Manipulate Nodes</h2>
                 <div id='color-controls'></div>
             </div>
 
-            <div class="box">
+            <div class="side-bar-section">
                 <div style="margin-top: 1em">
-                    <h2>Line Width</h2>
-                    {{dnaPlayground.lineSizePicker.min}}px
+                    <h2>Custom Controls</h2>
+                    <h3>Line Width</h3>
+                    <span class="slider-label-left">{{dnaPlayground.lineSizePicker.min + " "}}px</span>
+                    <span class="slider-label-right">{{dnaPlayground.lineSizePicker.max  + " "}}px</span>
                     <input
                         id        ="line-width"
                         ng-model  ="dnaPlayground.lineWidth"
@@ -37,13 +40,12 @@
                         min       ={{dnaPlayground.lineSizePicker.min}}
                         max       ={{dnaPlayground.lineSizePicker.max}}
                         value     ={{dnaPlayground.lineSizePicker.value}}/>
-                    {{dnaPlayground.lineSizePicker.max}}px
                 </div>
 
                 <a href="#" ng-click="dnaPlayground.updateLineWidth()"  class="myButton">refresh</a>
             </div>
 
-        </aside>
+        </right-side-bar>
 
     </div>
 
