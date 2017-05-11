@@ -53387,28 +53387,32 @@ Style.prototype.getColor = function(element){
     else if (element === "U"){
       col = $("#ucolor").spectrum('get').toHexString();
     }
-    // MH: add a color for thiamine
+    // MH: add a color for thymine
+    else if (element === "T"){
+      col = $("#ucolor").spectrum('get').toHexString();
+    }
+
+    else if (element === "G"){
+      col = $("#gcolor").spectrum('get').toHexString();
+    }
+    else if (element === "hbond"){
+      col = "#3A9AD9";
+    }
+    else if(element === "violation") {
+      col = "red";
+    }
+  } else {
+    if (element === "A"){
+      col = "#64F73F";
+    }
+    else if (element === "C"){
+      col = "#FFB340";
+    }
+    else if (element === "U"){
+      col = "#3C88EE";
+    }
+    // MH: add a color for thymine
 		else if (element === "T"){
-			col = $("#ucolor").spectrum('get').toHexString();
-		}
-    
-		else if (element === "G"){
-			col = $("#gcolor").spectrum('get').toHexString();
-		}
-		else if (element === "hbond"){
-			col = "#3A9AD9";
-		}
-		else if(element === "violation") {
-			col = "red";
-		}
-	} else {
-		if (element === "A"){
-			col = "#64F73F";
-		}
-		else if (element === "C"){
-			col = "#FFB340";
-		}
-		else if (element === "U"){
 			col = "#3C88EE";
 		}
 		else if (element === "G"){
