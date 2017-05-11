@@ -5,11 +5,6 @@
   height               : 40px;
   line-height          : 100%;
   border-radius        : 0px;
-  -webkit-border-radius: 0px;
-  -moz-border-radius   : 0px;
-  box-shadow           : 0px 0px 0px #666666;
-  -webkit-box-shadow   : 0px 0px 0px #666666;
-  -moz-box-shadow      : 0px 0px 0px #666666;
   background           : #737373;
   border               : solid 1px #6D6D6D;
   position             :relative;
@@ -26,7 +21,7 @@
   font-weight          : normal;
   font-family          : 'courier new';
   font-style           : normal;
-  font-size            : 20px;
+  font-size            : 2em;
   color                : #FFFDFD;
   text-decoration      : none;
   display              : block;
@@ -34,9 +29,6 @@
   margin               : 0;
   margin-bottom        : 6px;
   border-radius        : 0px;
-  -webkit-border-radius: 0px;
-  -moz-border-radius   : 0px;
-  text-shadow          : 0px 0px 0px #000000;
 }
 #menu-bar li ul li a {
   margin: 0;
@@ -44,26 +36,16 @@
 #menu-bar .active a, #menu-bar li:hover > a {
   background        : #787778;
   color             : #BFBFBF;
-  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .2);
-  -moz-box-shadow   : 0 1px 1px rgba(0, 0, 0, .2);
-  box-shadow        : 0 1px 1px rgba(0, 0, 0, .2);
-  text-shadow       : 0px 0px 0px #FFFFFF;
 }
 #menu-bar ul li:hover a, #menu-bar li:hover li a {
   background        : none;
   border            : none;
   color             : #666;
-  -box-shadow       : none;
-  -webkit-box-shadow: none;
-  -moz-box-shadow   : none;
 }
 #menu-bar ul a:hover {
   background           : #0399D4 !important;
   color                : #FFFFFF !important;
   border-radius        : 0;
-  -webkit-border-radius: 0;
-  -moz-border-radius   : 0;
-  text-shadow          : 0px 0px 0px #FFFFFF;
 }
 #menu-bar li:hover > ul {
   display: block;
@@ -79,11 +61,6 @@
   left                 : 0;
   border               : solid 1px #FFFFFF;
   border-radius        : 0px;
-  -webkit-border-radius: 0px;
-  -moz-border-radius   : 0px;
-  -webkit-box-shadow   : 0px 0px 0px #222222;
-  -moz-box-shadow      : 0px 0px 0px #222222;
-  box-shadow           : 0px 0px 0px #222222;
 }
 #menu-bar ul li {
   float: none;
@@ -93,27 +70,22 @@
 #menu-bar ul a {
   padding    :10px 0px 10px 15px;
   color      :#FFFFFF !important;
-  font-size  :16px;
+  font-size  :2em;
   font-style :normal;
   font-family:'times new roman';
   font-weight: normal;
-  text-shadow: 0px 0px 0px #FFFFFF;
 }
 #menu-bar ul li:first-child > a {
   border-top-left-radius         : 0px;
   -webkit-border-top-left-radius : 0px;
-  -moz-border-radius-topleft     : 0px;
   border-top-right-radius        : 0px;
   -webkit-border-top-right-radius: 0px;
-  -moz-border-radius-topright    : 0px;
 }
 #menu-bar ul li:last-child > a {
   border-bottom-left-radius         : 0px;
   -webkit-border-bottom-left-radius : 0px;
-  -moz-border-radius-bottomleft     : 0px;
   border-bottom-right-radius        : 0px;
   -webkit-border-bottom-right-radius: 0px;
-  -moz-border-radius-bottomright    : 0px;
 }
 #menu-bar:after {
   content    : ".";
