@@ -30,15 +30,15 @@ function LandingPageController($rootScope, $scope) {
   };
 
 
-  var testDiv1          = document.getElementById('matt_1');
-  var dnaGraph          = document.getElementById('dna-graph');
-  var dnaGraphContainer = document.getElementById('dna-graph-container');
-  var colorControls     = document.getElementById('color-controls');
+  var sequenceDefDiv       = document.getElementById('matt_1');
+  var dnaGraphDiv          = document.getElementById('dna-graph');
+  var dnaGraphContainerDiv = document.getElementById('dna-graph-container');
+  var optionsPanelDiv      = document.getElementById('color-controls');
 
   // Set outer div height after page is rendered.
   var dnaGraphHeight             = "900px";
-  dnaGraphContainer.style.height = dnaGraphHeight;
-  dnaGraph.style.height          = dnaGraphHeight;
+  dnaGraphContainerDiv.style.height = dnaGraphHeight;
+  dnaGraphDiv.style.height          = dnaGraphHeight;
 
   init(input);
 
@@ -47,9 +47,9 @@ function LandingPageController($rootScope, $scope) {
   function init(input) {
     var Dna = require("drawrnajs");
     vm.dna = new Dna({
-        testEl1     : testDiv1,
-        dnaGraphDiv : dnaGraph,
-        optsPanelDiv: colorControls,
+        sequenceDefDiv     : sequenceDefDiv,
+        dnaGraphDiv : dnaGraphDiv,
+        optsPanelDiv: optionsPanelDiv,
         seq         : input[0],
         dotbr       : input[1],
         layout      : "naview",
@@ -65,16 +65,14 @@ function LandingPageController($rootScope, $scope) {
   }
 
   function updateLineWidth() {
-    var width = vm.lineWidth;
-    setLineWidth(width);
+    setLineWidth(vm.lineWidth);
     refreshChart();
   }
 
   function setLineWidth(width) {
-    console.log('setting width');
-    console.log(width);
+    console.log('setting width: ', width, 'px');
     
-    var dnaGraph = document.getElementById('dna-graph');
+    // var dnaGraphDiv = document.getElementById('dna-graph');
 
     vm.dna.optns.struct.attributes.links.models[0].attributes.color = "purple";
     vm.dna.optns.struct.attributes.links.models.map((item)=> {

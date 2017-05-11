@@ -54251,7 +54251,7 @@ var Drawrnajs = Backbone.View.extend({
         //views
         //sequence input panel
         if(opts.seqpanel){
-            var seqEl = opts.testEl1;
+            var seqEl = opts.sequenceDefDiv;
             this.seq = new Seqpanel({
                 struct: this.struct,
                 el    : seqEl
