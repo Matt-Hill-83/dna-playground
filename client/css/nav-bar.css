@@ -7,8 +7,8 @@
   border-radius        : 0px;
   background           : #737373;
   border               : solid 1px #6D6D6D;
-  position             :relative;
-  z-index              :999;
+  position             : relative;
+  z-index              : 5000;
 }
 #menu-bar li {
   margin    : 0px 0px 6px 0px;
@@ -55,7 +55,7 @@
   display              : none;
   margin               : 0;
   padding              : 0;
-  width                : 185px;
+  width                : 250px;
   position             : absolute;
   top                  : 30px;
   left                 : 0;
@@ -72,7 +72,7 @@
   color      :#FFFFFF !important;
   font-size  :2em;
   font-style :normal;
-  font-family:'times new roman';
+  font-family:'courier new';
   font-weight: normal;
 }
 #menu-bar ul li:first-child > a {
@@ -103,4 +103,8 @@
 }
 * html #menu-bar {
   height: 1%;
+}
+
+.nav-right {
+  float: right;
 }
