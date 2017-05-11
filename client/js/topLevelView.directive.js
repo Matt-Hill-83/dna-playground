@@ -19,8 +19,8 @@ function LandingPageController($rootScope, $scope) {
   vm = this;
   vm.setLineWidth = setLineWidth;
   vm.refreshChart = refreshChart;
-  vm.myButton = myButton;
-  vm.lineWidth = 3;
+  vm.myButton     = myButton;
+  vm.lineWidth    = 3;
   vm.dna;
 
   vm.lineSizePicker = {
@@ -30,20 +30,6 @@ function LandingPageController($rootScope, $scope) {
     value: 2
   };
 
-  function myButton () {
-    var width = 20;
-    setLineWidth(width);
-
-    
-  }
-
-  function refreshChart() {
-    vm.dna.struct.set("renderSwitch", false);
-    vm.dna.struct.set("renderSwitch", true);
-
-    console.log('refreshing');
-  }
-  
 
   var testDiv1          = document.getElementById('matt_1');
   var dnaGraph          = document.getElementById('dna-graph');
@@ -83,6 +69,12 @@ function LandingPageController($rootScope, $scope) {
     vm.dna.render();
   }
 
+  function myButton () {
+    var width = 10;
+    setLineWidth(width);
+    refreshChart();
+  }
+
   function setLineWidth(width) {
     debugger;
     console.log('setting width');
@@ -95,10 +87,15 @@ function LandingPageController($rootScope, $scope) {
         item.attributes.color  = "purple";
         item.attributes.weight = width;
     });
-    refreshChart();
 
   }
 
+  function refreshChart() {
+    console.log('refreshing');
+    debugger;
+    vm.dna.struct.set("renderSwitch", !vm.dna.struct.get("renderSwitch"));    
+  }
+  
 
 
 }

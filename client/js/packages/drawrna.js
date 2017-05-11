@@ -50898,6 +50898,9 @@ var Structure = Backbone.Model.extend({
     },
 
     toCytoscape: function(){
+      console.log('toCytoscape');
+      debugger;
+      
         //Create a JSON structure from a graph object built by the
       //transformDotBracket function
       //The JSON structure fits the requirements of CytoscapeJS
@@ -54283,6 +54286,7 @@ var Drawrnajs = Backbone.View.extend({
 
     },
     render: function(){
+      debugger;
       console.log('rendering structure');
       
         if(this.seq){
